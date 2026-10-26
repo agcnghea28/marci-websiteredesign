@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none">
+  <circle cx="40" cy="40" r="36" stroke="#161616" stroke-width="2" />
+  <circle cx="40" cy="40" r="28" stroke="#161616" stroke-width="1" />
+  <path fill="#161616" d="M40 22 48 38H32l8-16Zm0 36-8-16h16l-8 16Z" opacity="0.85" />
+  <text
+    x="88"
+    y="34"
+    fill="#161616"
+    font-family="Arial, sans-serif"
+    font-size="11"
+    font-weight="700"
+  >
+    PAHRUMP VALLEY
+  </text>
+  <text
+    x="88"
+    y="50"
+    fill="#161616"
+    font-family="Arial, sans-serif"
+    font-size="10"
+    font-weight="600"
+  >
+    CHAMBER OF COMMERCE
+  </text>
+</svg>

@@ -1,0 +1,52 @@
+import Image from "next/image";
+import LogoMarquee from "./LogoMarquee";
+import styles from "./MeetMarci.module.css";
+
+const PHONE_HREF = "tel:+12069196886";
+
+export default function MeetMarci() {
+  return (
+    <section id="about" className="section">
+      <div className={styles.layout}>
+        <div className={styles.imageWrap}>
+          <Image
+            src="/images/hero/hero.webp"
+            alt="Pahrump, Nevada community and homes"
+            fill
+            sizes="(min-width: 768px) 42%, 100%"
+            className={styles.image}
+          />
+        </div>
+        <div className={styles.content}>
+          <p className="eyebrow">Meet Marci</p>
+          <h2>Marci J. Metzger</h2>
+          <p className={styles.subtitle}>Realtor for Nearly 3 Decades</p>
+          <div className={styles.copy}>
+            <p>
+              With a real estate career dating back to 1995, Marci J. Metzger
+              brings years of experience helping buyers and sellers across
+              different markets. She previously worked as a REALTOR® and licensed
+              Broker in Washington State before bringing her knowledge and
+              expertise to Southern Nevada.
+            </p>
+            <p>
+              Now based in Pahrump, Marci appreciates the small-town atmosphere,
+              local amenities, and lifestyle the community offers. Her familiarity
+              with the area helps her guide clients as they explore their options
+              and find a home that suits their needs.
+            </p>
+          </div>
+          <div className={styles.actions}>
+            <a href={PHONE_HREF} className="btn btn--primary">
+              Call Marci Today
+            </a>
+            <a href="#contact" className="btn btn--outline">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+      <LogoMarquee />
+    </section>
+  );
+}

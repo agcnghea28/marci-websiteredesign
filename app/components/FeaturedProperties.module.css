@@ -1,0 +1,314 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.introText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--measure);
+}
+
+.introText .lead {
+  max-width: none;
+}
+
+.exploreAll {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.exploreAll svg {
+  width: var(--space-4);
+  height: var(--space-4);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* Tablet — 768px */
+@media (min-width: 768px) {
+  .intro {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-8);
+  }
+
+  .exploreAll {
+    margin-inline-start: auto;
+  }
+}
+
+.carousel {
+  margin-top: var(--space-8);
+  margin-inline-end: calc(-1 * var(--section-padding-inline));
+  width: calc(100% + var(--section-padding-inline));
+}
+
+.track {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-6);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: auto;
+  scroll-padding-inline-start: 0;
+  scroll-padding-inline-end: var(--space-6);
+  padding-inline-end: var(--space-6);
+  padding-bottom: var(--space-2);
+  touch-action: pan-x;
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.trackDragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  flex: 0 0 var(--featured-card-width);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-color: var(--color-bg);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  border-radius: var(--radius-card);
+  transition:
+    border-color var(--transition-base),
+    transform var(--transition-base);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--featured-card-border-hover);
+    transform: translateY(var(--featured-card-hover-lift));
+  }
+
+  .card:hover .image {
+    transform: scale(var(--featured-card-image-scale));
+  }
+
+  .card:hover .status {
+    color: var(--featured-status-text-hover);
+    background-color: var(--featured-status-bg-hover);
+  }
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: var(--featured-card-image-min-height);
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform var(--transition-base);
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.status {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 1;
+  padding-block: var(--space-2);
+  padding-inline: var(--space-3);
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--text-small);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-ink);
+  background-color: var(--color-white);
+  border-radius: var(--radius-card);
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.title {
+  font-size: var(--text-h4);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-small);
+  color: color-mix(in srgb, var(--color-ink) 70%, transparent);
+}
+
+.location svg {
+  width: var(--space-4);
+  height: var(--space-4);
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.specGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--featured-spec-row-gap) var(--space-6);
+  margin: 0;
+  padding-block-end: var(--featured-spec-padding-bottom);
+  border-block-end: 1px solid var(--featured-spec-divider);
+}
+
+.specItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.specIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--featured-spec-icon-size);
+  height: var(--featured-spec-icon-size);
+  margin: 0;
+  color: var(--featured-spec-icon-color);
+}
+
+.specIcon svg {
+  width: var(--featured-spec-icon-size);
+  height: var(--featured-spec-icon-size);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--featured-spec-icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.specLabel {
+  margin: 0;
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+
+.price {
+  margin: 0;
+  font-family: var(--font-heading), serif;
+  font-size: var(--featured-card-price-size);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: auto;
+  padding-top: var(--space-5);
+}
+
+.viewProperty {
+  flex-shrink: 0;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-8);
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--featured-dot-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dot,
+.dotActive {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: var(--featured-dot-hit-padding);
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  appearance: none;
+}
+
+.dot::after,
+.dotActive::after {
+  content: "";
+  display: block;
+  height: var(--featured-dot-size);
+  border-radius: var(--featured-dot-radius);
+  background-color: var(--featured-dot-color);
+  transition:
+    width var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.dot::after {
+  width: var(--featured-dot-size);
+}
+
+.dot:focus-visible,
+.dotActive:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .dot:hover::after {
+    background-color: color-mix(in srgb, var(--color-ink) 44%, transparent);
+  }
+}
+
+.dotActive::after {
+  width: var(--featured-dot-active-width);
+  background-color: var(--featured-dot-color-active);
+}
+

@@ -1,0 +1,132 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+}
+
+.image {
+  object-fit: cover;
+  object-position: var(--hero-object-position);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+  max-width: var(--measure);
+}
+
+.subtitle {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--text-h5);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.copy p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.logoStrip {
+  margin-top: var(--meet-marci-logo-strip-margin-top);
+  margin-inline: calc(-1 * var(--section-padding-inline));
+  width: calc(100% + (var(--section-padding-inline) * 2));
+  padding-block: var(--meet-marci-logo-strip-padding-y);
+  background-color: var(--meet-marci-logo-strip-bg);
+}
+
+.marqueeViewport {
+  overflow: hidden;
+  width: 100%;
+  padding-inline: var(--section-padding-inline);
+}
+
+.marqueeTrack {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  cursor: grab;
+  touch-action: pan-x;
+  user-select: none;
+  will-change: transform;
+}
+
+.marqueeDragging {
+  cursor: grabbing;
+}
+
+.logoItem {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--meet-marci-logo-height);
+  padding-inline: var(--meet-marci-logo-gap);
+  border-inline-start: 1px solid var(--meet-marci-logo-divider);
+}
+
+.logoItem:first-child {
+  border-inline-start: none;
+}
+
+.logoImage {
+  width: auto;
+  height: 100%;
+  max-width: var(--meet-marci-logo-max-width);
+  max-height: var(--meet-marci-logo-height);
+  object-fit: contain;
+}
+
+/* Tablet — 768px */
+@media (min-width: 768px) {
+  .layout {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--space-12);
+  }
+
+  .imageWrap {
+    flex: 1 1 50%;
+    width: auto;
+    aspect-ratio: auto;
+    align-self: stretch;
+    min-height: 100%;
+  }
+
+  .content {
+    flex: 1 1 50%;
+    max-width: none;
+    padding-inline-start: var(--space-12);
+  }
+}

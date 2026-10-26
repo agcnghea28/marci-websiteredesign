@@ -28,6 +28,117 @@
   --color-accent: var(--color-rose);
   --color-accent-strong: var(--color-rose-deep);
   --color-footer-bg: var(--color-ink);
+  --color-nav-text: var(--color-white);
+  --color-nav-hover: var(--color-rose);
+
+  /* Hero overlay — keeps photo visible while boosting copy contrast */
+  --overlay-hero-top: color-mix(in srgb, var(--color-ink) 78%, transparent);
+  --overlay-hero-mid: color-mix(in srgb, var(--color-ink) 50%, transparent);
+  --overlay-hero-bottom: color-mix(in srgb, var(--color-ink) 62%, transparent);
+
+  /* Button state colors */
+  --btn-text-hover: var(--color-white);
+  --btn-primary-bg: var(--color-rose-deep);
+  --btn-primary-bg-hover: var(--color-ink);
+  --btn-primary-bg-active: color-mix(in srgb, var(--color-ink) 88%, var(--color-black));
+  --btn-on-dark-bg: var(--color-white);
+  --btn-on-dark-text: var(--color-ink);
+  --btn-on-dark-bg-hover: var(--color-rose-deep);
+  --btn-on-dark-bg-active: color-mix(
+    in srgb,
+    var(--color-rose-deep) 85%,
+    var(--color-black)
+  );
+  --btn-outline-border: var(--color-ink);
+  --btn-outline-bg-hover: var(--color-ink);
+  --btn-outline-bg-active: var(--btn-primary-bg-active);
+  --btn-outline-on-dark-bg-hover: var(--color-rose-deep);
+  --btn-outline-on-dark-bg-active: var(--btn-on-dark-bg-active);
+
+  --radius-btn: 0;
+  --radius-card: 0;
+  --control-min-height: 2.75rem;
+  --search-surface: color-mix(in srgb, var(--color-white) 88%, transparent);
+  --search-popover-surface: var(--color-white);
+  --search-border: color-mix(in srgb, var(--color-ink) 14%, transparent);
+  --search-divider: color-mix(in srgb, var(--color-ink) 12%, transparent);
+  --search-padding: var(--space-4);
+  --search-padding-inline-end: var(--space-5);
+  --search-gap: var(--space-3);
+  --search-gap-desktop: var(--space-4);
+  --search-field-min-width: 9rem;
+  --search-type-min-width: 6.5rem;
+  --search-price-min-width: 11rem;
+  --search-field-padding-inline: var(--space-3);
+  /* Wide enough for labels/placeholders; narrower than full hero content */
+  --search-bar-max-width: min(100%, 56rem);
+  --search-blur: 0.5rem;
+  --search-control-min-height: 2.25rem;
+  --search-label-size: var(--text-caption);
+  --search-input-size: var(--text-small);
+  --search-icon-color: var(--color-accent-strong);
+  --search-icon-size: var(--space-5);
+  --search-chevron-size: var(--space-4);
+  --search-advanced-min-width: 6.5rem;
+  --search-price-floor: 0;
+  --search-price-ceiling: 8000000;
+  --search-price-step: 50000;
+  --search-price-default-min: 200000;
+  --search-price-default-max: 8000000;
+  --search-range-track: color-mix(in srgb, var(--color-ink) 16%, transparent);
+  --search-range-fill: var(--color-accent-strong);
+  --search-range-thumb-size: var(--space-4);
+  --search-range-track-height: var(--space-1);
+  --search-range-thumb-offset: calc(
+    (var(--search-range-track-height) - var(--search-range-thumb-size)) / 2
+  );
+  --z-search-popover: 201;
+
+  /* Featured property cards — horizontal carousel */
+  --featured-card-width: 88%;
+  --featured-card-image-min-height: 14rem;
+  --featured-card-border-hover: color-mix(in srgb, var(--color-ink) 28%, transparent);
+  --featured-card-hover-lift: -0.25rem;
+  --featured-card-image-scale: 1.04;
+  --featured-status-bg-hover: var(--color-ink);
+  --featured-status-text-hover: var(--color-white);
+  --featured-spec-icon-size: 1.5rem;
+  --featured-spec-icon-color: var(--color-ink);
+  --featured-spec-icon-stroke: 2;
+  --featured-spec-divider: color-mix(in srgb, var(--color-ink) 12%, transparent);
+  --featured-spec-padding-bottom: var(--space-8);
+  --featured-spec-row-gap: var(--space-4);
+  --featured-card-price-size: var(--text-h4);
+  --featured-dot-size: var(--space-2);
+  --featured-dot-active-width: var(--space-5);
+  --featured-dot-radius: 62.4375rem;
+  --featured-dot-gap: var(--space-1);
+  --featured-dot-hit-padding: var(--space-1);
+  --featured-dot-color: color-mix(in srgb, var(--color-ink) 32%, transparent);
+  --featured-dot-color-active: var(--color-ink);
+  --services-card-min-height: 30rem;
+  --services-title-gap: var(--space-12);
+  --services-card-overlay-top: color-mix(in srgb, var(--color-ink) 32%, transparent);
+  --services-card-overlay-mid: color-mix(in srgb, var(--color-ink) 48%, transparent);
+  --services-card-overlay-bottom: color-mix(in srgb, var(--color-ink) 92%, transparent);
+  --services-card-overlay-bottom-hover: color-mix(in srgb, var(--color-ink) 96%, transparent);
+  --services-card-content-scrim: color-mix(in srgb, var(--color-ink) 88%, transparent);
+  --services-card-image-scale: var(--featured-card-image-scale);
+  --services-card-content-padding: var(--space-6);
+  --services-description-color: var(--color-white);
+  --services-description-shadow: 0 0.0625rem 0.375rem
+    color-mix(in srgb, var(--color-ink) 72%, transparent);
+  --services-card-index-color: color-mix(in srgb, var(--color-white) 72%, transparent);
+  --services-card-index-line: color-mix(in srgb, var(--color-white) 24%, transparent);
+  --meet-marci-logo-height: 3.25rem;
+  --meet-marci-logo-max-width: 11rem;
+  --meet-marci-logo-gap: var(--space-12);
+  --meet-marci-logo-strip-margin-top: var(--space-12);
+  --meet-marci-logo-strip-padding-y: var(--space-6);
+  --meet-marci-logo-strip-bg: var(--color-bg);
+  --meet-marci-logo-divider: color-mix(in srgb, var(--color-ink) 12%, transparent);
+  --btn-hover-lift: -0.125rem;
+  --opacity-disabled: 0.5;
 
   /* ==========================================================================
      TYPOGRAPHY — font families (--font-heading, --font-body set on <html> by next/font)
@@ -76,6 +187,7 @@
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
+  --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-12: 3rem;
@@ -86,32 +198,87 @@
      Breakpoints: tablet 768px, laptop 1024px, desktop 1280px
      ========================================================================== */
 
-  --gutter: 1.25rem;
-  --section-padding-y: 4rem;
+  --section-padding-y: var(--space-8);
   --container-max: 1200px;
+
+  /* ==========================================================================
+     HEADER AND MENU
+     ========================================================================== */
+
+  --header-padding-x: 1.5rem;
+  --header-padding-y: var(--space-3);
+  /* Horizontal inset for header, sections, and in-page content */
+  --section-padding-inline: var(--header-padding-x);
+  --gutter: var(--section-padding-inline);
+  --header-height: calc(
+    var(--logo-height-mobile) + (var(--header-padding-y) * 2)
+  );
+  --header-scroll-threshold: 2.5rem;
+  /* Minimum scroll movement before toggling hide/show (reduces trackpad jitter) */
+  --header-scroll-delta: 0.5rem;
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-menu: 210;
+  --transition-base: 250ms ease;
+  --menu-panel-max: 24rem;
+  --logo-height-mobile: 3.75rem;
+  --logo-filter-light: brightness(0) invert(1);
+  /* Hero image crop anchor (adjust x/y as needed) */
+  --hero-object-position: center center;
+  --hero-padding-bottom: var(--space-8);
+  --hero-search-offset-top: var(--space-4);
+}
+
+/* Phones — tighter search shell */
+@media (max-width: 767px) {
+  :root {
+    --search-padding: var(--space-3);
+    --search-gap: var(--space-2);
+  }
 }
 
 /* Tablet — 768px */
 @media (min-width: 768px) {
   :root {
-    --gutter: 2rem;
-    --section-padding-y: 5rem;
+    --hero-padding-bottom: var(--space-10);
+    --hero-search-offset-top: var(--space-6);
+    --section-padding-y: var(--space-12);
+    --featured-card-width: 42%;
+    --featured-card-image-min-height: 17rem;
+    --logo-height-tablet: 4.5rem;
+    --header-padding-x: 2.5rem;
+    --header-padding-y: var(--space-3);
+    --header-height: calc(
+      var(--logo-height-tablet) + (var(--header-padding-y) * 2)
+    );
   }
 }
 
 /* Laptop — 1024px */
 @media (min-width: 1024px) {
   :root {
-    --gutter: 3rem;
-    --section-padding-y: 6rem;
+    --hero-padding-bottom: var(--space-12);
+    --section-padding-y: var(--space-12);
+    --featured-card-width: 32%;
+    --featured-card-image-min-height: 20rem;
+    --logo-height-desktop: 5rem;
+    --header-padding-x: 4rem;
+    --header-padding-y: var(--space-4);
+    --header-height: calc(
+      var(--logo-height-desktop) + (var(--header-padding-y) * 2)
+    );
   }
 }
 
 /* Desktop — 1280px */
 @media (min-width: 1280px) {
   :root {
-    --gutter: 4rem;
-    --section-padding-y: 7.5rem;
+    --section-padding-y: var(--space-16);
+    --header-padding-x: 5rem;
+    --header-padding-y: var(--space-4);
+    --header-height: calc(
+      var(--logo-height-desktop) + (var(--header-padding-y) * 2)
+    );
   }
 }
 
@@ -120,12 +287,38 @@
    ========================================================================== */
 
 .container {
-  width: min(100% - (var(--gutter) * 2), var(--container-max));
-  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: 0;
 }
 
 .section {
   padding-block: var(--section-padding-y);
+  padding-inline: var(--section-padding-inline);
+  scroll-margin-top: var(--header-height);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Full-bleed header row padding (no max-width) */
+.container-style {
+  width: 100%;
+  max-width: 100%;
+  padding-inline: var(--section-padding-inline);
+}
+
+#home {
+  scroll-margin-top: var(--header-height);
 }
 
 /* ==========================================================================
@@ -188,6 +381,11 @@ h6 {
   font-size: var(--text-h6);
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 p {
   font-size: var(--text-body);
   line-height: var(--leading-normal);
@@ -207,12 +405,26 @@ small {
   font-size: var(--text-caption);
 }
 
+/* Shared header + menu panel link typography and colors */
+.nav-link,
 nav a {
   font-family: var(--font-body), sans-serif;
   font-size: var(--text-nav);
   font-weight: var(--weight-medium);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
+  text-decoration: none;
+}
+
+.nav-link,
+.nav-link:link,
+.nav-link:visited {
+  color: var(--color-nav-text);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--color-nav-hover);
 }
 
 blockquote {
@@ -233,6 +445,7 @@ input,
 button,
 select {
   font: inherit;
+  color: inherit;
 }
 
 /* ==========================================================================
@@ -248,7 +461,15 @@ select {
   color: var(--color-accent-strong);
 }
 
-.btn {
+.eyebrow--on-dark {
+  color: var(--color-white);
+}
+
+a.btn,
+button.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-body), sans-serif;
   font-size: var(--text-btn);
   font-weight: var(--weight-semibold);
@@ -257,6 +478,153 @@ select {
   min-height: 44px;
   padding-block: var(--space-3);
   padding-inline: var(--space-6);
+  border: 1px solid transparent;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-base);
+}
+
+/* Primary — rose default, ink hover/focus with white text */
+a.btn.btn--primary,
+button.btn.btn--primary,
+a.btn.btn--primary:visited,
+button.btn.btn--primary:visited {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-text-hover);
+  border-color: var(--btn-primary-bg);
+}
+
+a.btn.btn--primary:not(:disabled):not([aria-disabled="true"]):hover,
+a.btn.btn--primary:not(:disabled):not([aria-disabled="true"]):focus-visible,
+button.btn.btn--primary:not(:disabled):not([aria-disabled="true"]):hover,
+button.btn.btn--primary:not(:disabled):not([aria-disabled="true"]):focus-visible {
+  background-color: var(--btn-primary-bg-hover);
+  color: var(--btn-text-hover);
+  border-color: var(--btn-primary-bg-hover);
+}
+
+a.btn.btn--primary:not(:disabled):not([aria-disabled="true"]):active,
+button.btn.btn--primary:not(:disabled):not([aria-disabled="true"]):active {
+  background-color: var(--btn-primary-bg-active);
+  color: var(--btn-text-hover);
+  border-color: var(--btn-primary-bg-active);
+}
+
+/* Primary on dark — white default, rose-deep hover/focus with white text */
+a.btn.btn--primary.btn--on-dark,
+button.btn.btn--primary.btn--on-dark,
+a.btn.btn--primary.btn--on-dark:visited,
+button.btn.btn--primary.btn--on-dark:visited {
+  background-color: var(--btn-on-dark-bg);
+  color: var(--btn-on-dark-text);
+  border-color: var(--btn-on-dark-bg);
+}
+
+a.btn.btn--primary.btn--on-dark:not(:disabled):not([aria-disabled="true"]):hover,
+a.btn.btn--primary.btn--on-dark:not(:disabled):not([aria-disabled="true"]):focus-visible,
+button.btn.btn--primary.btn--on-dark:not(:disabled):not([aria-disabled="true"]):hover,
+button.btn.btn--primary.btn--on-dark:not(:disabled):not([aria-disabled="true"]):focus-visible {
+  background-color: var(--btn-on-dark-bg-hover);
+  color: var(--btn-text-hover);
+  border-color: var(--btn-on-dark-bg-hover);
+}
+
+a.btn.btn--primary.btn--on-dark:not(:disabled):not([aria-disabled="true"]):active,
+button.btn.btn--primary.btn--on-dark:not(:disabled):not([aria-disabled="true"]):active {
+  background-color: var(--btn-on-dark-bg-active);
+  color: var(--btn-text-hover);
+  border-color: var(--btn-on-dark-bg-active);
+}
+
+/* Outline — ink border/text, ink hover/focus with white text */
+a.btn.btn--outline,
+button.btn.btn--outline,
+a.btn.btn--outline:visited,
+button.btn.btn--outline:visited {
+  background-color: transparent;
+  color: var(--btn-outline-border);
+  border-color: var(--btn-outline-border);
+}
+
+a.btn.btn--outline:not(:disabled):not([aria-disabled="true"]):hover,
+a.btn.btn--outline:not(:disabled):not([aria-disabled="true"]):focus-visible,
+button.btn.btn--outline:not(:disabled):not([aria-disabled="true"]):hover,
+button.btn.btn--outline:not(:disabled):not([aria-disabled="true"]):focus-visible {
+  background-color: var(--btn-outline-bg-hover);
+  color: var(--btn-text-hover);
+  border-color: var(--btn-outline-bg-hover);
+}
+
+a.btn.btn--outline:not(:disabled):not([aria-disabled="true"]):active,
+button.btn.btn--outline:not(:disabled):not([aria-disabled="true"]):active {
+  background-color: var(--btn-outline-bg-active);
+  color: var(--btn-text-hover);
+  border-color: var(--btn-outline-bg-active);
+}
+
+/* Outline on dark — white border/text, rose-deep hover/focus with white text */
+a.btn.btn--outline.btn--on-dark,
+button.btn.btn--outline.btn--on-dark,
+a.btn.btn--outline.btn--on-dark:visited,
+button.btn.btn--outline.btn--on-dark:visited {
+  background-color: transparent;
+  color: var(--btn-text-hover);
+  border-color: var(--btn-text-hover);
+}
+
+a.btn.btn--outline.btn--on-dark:not(:disabled):not([aria-disabled="true"]):hover,
+a.btn.btn--outline.btn--on-dark:not(:disabled):not([aria-disabled="true"]):focus-visible,
+button.btn.btn--outline.btn--on-dark:not(:disabled):not([aria-disabled="true"]):hover,
+button.btn.btn--outline.btn--on-dark:not(:disabled):not([aria-disabled="true"]):focus-visible {
+  background-color: var(--btn-outline-on-dark-bg-hover);
+  color: var(--btn-text-hover);
+  border-color: var(--btn-outline-on-dark-bg-hover);
+}
+
+a.btn.btn--outline.btn--on-dark:not(:disabled):not([aria-disabled="true"]):active,
+button.btn.btn--outline.btn--on-dark:not(:disabled):not([aria-disabled="true"]):active {
+  background-color: var(--btn-outline-on-dark-bg-active);
+  color: var(--btn-text-hover);
+  border-color: var(--btn-outline-on-dark-bg-active);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a.btn:not(:disabled):not([aria-disabled="true"]):hover,
+  button.btn:not(:disabled):not([aria-disabled="true"]):hover {
+    transform: translateY(var(--btn-hover-lift));
+  }
+}
+
+a.btn:not(:disabled):not([aria-disabled="true"]):active,
+button.btn:not(:disabled):not([aria-disabled="true"]):active {
+  transform: translateY(0);
+}
+
+a.btn:focus-visible,
+button.btn:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+a.btn:disabled,
+a.btn[aria-disabled="true"],
+button.btn:disabled,
+button.btn[aria-disabled="true"] {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+  transform: none;
+}
+
+a.btn:disabled:hover,
+a.btn[aria-disabled="true"]:hover,
+button.btn:disabled:hover,
+button.btn[aria-disabled="true"]:hover {
+  transform: none;
 }
 
 :focus-visible {
