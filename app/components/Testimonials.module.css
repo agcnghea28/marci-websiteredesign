@@ -293,6 +293,40 @@
     transform: translate(-50%, -50%) scale(0.92);
   }
 
+  .carousel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+    padding-bottom: calc(var(--space-10) + var(--space-2));
+  }
+
+  .stage {
+    order: 1;
+    min-height: clamp(20rem, 50dvh, 28rem);
+    padding-inline: 0;
+  }
+
+  .track {
+    min-height: inherit;
+  }
+
+  .navPrev,
+  .navNext {
+    position: absolute;
+    bottom: var(--space-2);
+    z-index: 4;
+  }
+
+  .navPrev {
+    left: 0;
+  }
+
+  .navNext {
+    right: 0;
+  }
+
   .navButton {
     width: var(--space-10);
     height: var(--space-10);

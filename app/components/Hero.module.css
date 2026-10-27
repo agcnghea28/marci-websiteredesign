@@ -121,6 +121,10 @@
   margin-inline: auto;
 }
 
+.ctas .btn {
+  width: 100%;
+}
+
 /* Short viewports — keep search visible without crushing copy */
 @media (max-height: 700px) {
   .content {
@@ -150,6 +154,7 @@
 
   .ctas .btn {
     flex: 0 1 auto;
+    width: auto;
   }
 }
 

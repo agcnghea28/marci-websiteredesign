@@ -212,6 +212,7 @@
 
 .priceHeader {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--search-gap);
@@ -228,12 +229,13 @@
 
 .priceValues {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   gap: var(--space-2);
   margin: 0;
   min-width: 0;
-  flex-shrink: 0;
+  flex: 1 1 auto;
   white-space: nowrap;
   font-size: var(--search-input-size);
   font-weight: var(--weight-semibold);

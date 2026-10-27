@@ -25,8 +25,14 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
   gap: var(--space-3);
+  width: 100%;
+}
+
+.actions .btn {
+  flex: 1 1 calc(50% - var(--space-2));
+  min-width: min(100%, 10rem);
 }
 
 .rule {
@@ -81,6 +87,11 @@
 
 .brand p {
   margin-top: var(--space-2);
+}
+
+.contact > a,
+.brand p {
+  overflow-wrap: anywhere;
 }
 
 .linkList,
@@ -219,6 +230,16 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-8);
+  }
+
+  .actions {
+    width: auto;
+    align-items: center;
+  }
+
+  .actions .btn {
+    flex: 0 1 auto;
+    min-width: 0;
   }
 
   .ctaTitle {

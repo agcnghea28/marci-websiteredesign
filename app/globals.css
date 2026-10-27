@@ -145,7 +145,7 @@
   --contact-icon-size: var(--space-6);
   --contact-icon-stroke: var(--featured-spec-icon-stroke);
   --contact-icon-color: var(--color-accent-strong);
-  --contact-form-padding: var(--space-8);
+  --contact-form-padding: var(--space-6);
   --contact-meta-color: color-mix(in srgb, var(--color-ink) 72%, transparent);
   --contact-field-border: color-mix(in srgb, var(--color-ink) 16%, transparent);
   --contact-field-border-focus: var(--color-ink);
@@ -167,7 +167,7 @@
   --footer-logo-height: var(--meet-marci-logo-height);
   --footer-logo-max-width: var(--meet-marci-logo-max-width);
   --footer-social-size: var(--contact-social-glyph);
-  --services-card-min-height: 30rem;
+  --services-card-min-height: clamp(22rem, 58dvh, 30rem);
   --services-title-gap: var(--space-12);
   --services-card-overlay-top: color-mix(in srgb, var(--color-ink) 32%, transparent);
   --services-card-overlay-mid: color-mix(in srgb, var(--color-ink) 48%, transparent);
@@ -197,7 +197,7 @@
   --testimonials-card-bg: var(--color-bg);
   --testimonials-card-max-width: 28rem;
   --testimonials-card-min-height: 20rem;
-  --testimonials-card-padding: var(--space-10);
+  --testimonials-card-padding: var(--space-6);
   --testimonials-card-shadow: 0 1rem 2.5rem
     color-mix(in srgb, var(--color-ink) 18%, transparent);
   --testimonials-avatar-size: 3.5rem;
@@ -213,7 +213,7 @@
   --testimonials-card-side-scale: 0.9;
   --testimonials-card-side-offset: 44%;
   --testimonials-card-rotate: 22deg;
-  --testimonials-stage-min-height: 32rem;
+  --testimonials-stage-min-height: clamp(22rem, 52dvh, 32rem);
   --testimonials-carousel-gap: var(--space-6);
   --testimonials-nav-size: 3rem;
   --testimonials-nav-bg: transparent;
@@ -255,6 +255,7 @@
   --leading-tight: 1.15;
   --leading-snug: 1.3;
   --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
 
   /* Letter spacing */
   --tracking-normal: 0;
@@ -292,7 +293,7 @@
      HEADER AND MENU
      ========================================================================== */
 
-  --header-padding-x: 1.5rem;
+  --header-padding-x: 1rem;
   --header-padding-y: var(--space-3);
   /* Horizontal inset for header, sections, and in-page content */
   --section-padding-inline: var(--header-padding-x);
@@ -308,7 +309,7 @@
   --z-menu: 210;
   --transition-base: 250ms ease;
   --menu-panel-max: 24rem;
-  --logo-height-mobile: 3.75rem;
+  --logo-height-mobile: 3.25rem;
   --logo-filter-light: brightness(0) invert(1);
   /* Hero image crop anchor (adjust x/y as needed) */
   --hero-object-position: center center;
@@ -327,6 +328,8 @@
 /* Tablet — 768px */
 @media (min-width: 768px) {
   :root {
+    --services-card-min-height: 30rem;
+    --testimonials-card-padding: var(--space-10);
     --hero-padding-bottom: var(--space-10);
     --hero-search-offset-top: var(--space-6);
     --section-padding-y: var(--space-12);
@@ -439,6 +442,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -447,6 +451,12 @@ body {
   line-height: var(--leading-normal);
   color: var(--color-text);
   background-color: var(--color-bg);
+  overflow-x: clip;
+}
+
+main {
+  min-width: 0;
+  overflow-x: clip;
 }
 
 h1,

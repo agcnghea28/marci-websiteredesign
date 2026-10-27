@@ -1,8 +1,8 @@
 import { validateContactForm } from "../../lib/contactFormValidation";
-import { sendContactConfirmationEmail } from "../../lib/sendContactEmail";
 
 export const runtime = "nodejs";
 
+/** Demo contact endpoint — validates payload only; never sends email. */
 export async function POST(request) {
   let body;
 
@@ -27,24 +27,5 @@ export async function POST(request) {
     );
   }
 
-  const payload = {
-    name: values.name.trim(),
-    email: values.email.trim(),
-    subject: values.subject,
-    message: values.message.trim(),
-  };
-
-  try {
-    await sendContactConfirmationEmail(payload);
-    return Response.json({ ok: true });
-  } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Could not send email.";
-    const isConfig = message.includes("not configured");
-
-    return Response.json(
-      { error: message },
-      { status: isConfig ? 503 : 502 },
-    );
-  }
+  return Response.json({ ok: true, demo: true });
 }

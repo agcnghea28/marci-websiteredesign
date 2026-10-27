@@ -3,6 +3,11 @@
   color: var(--color-white);
 }
 
+.inner {
+  width: 100%;
+  min-width: 0;
+}
+
 .heading {
   margin: 0;
   text-align: center;

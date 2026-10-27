@@ -1,3 +1,8 @@
+.inner {
+  width: 100%;
+  min-width: 0;
+}
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -74,14 +79,20 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-4);
+  align-items: stretch;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.actions .btn {
+  flex: 1 1 calc(50% - var(--space-2));
+  min-width: min(100%, 10rem);
 }
 
 .logoStrip {
-  --meet-marci-logo-height: 6.25rem;
-  --meet-marci-logo-max-width: 22rem;
-  --meet-marci-logo-gap: var(--space-10);
+  --meet-marci-logo-height: 4.5rem;
+  --meet-marci-logo-max-width: 16rem;
+  --meet-marci-logo-gap: var(--space-6);
   --meet-marci-logo-strip-padding-y: var(--space-4);
 
   margin-top: var(--meet-marci-logo-strip-margin-top);
@@ -89,6 +100,7 @@
   width: calc(100% + (var(--section-padding-inline) * 2));
   padding-block: var(--meet-marci-logo-strip-padding-y);
   background-color: var(--meet-marci-logo-strip-bg);
+  overflow-x: clip;
 }
 
 .marqueeViewport {
@@ -139,6 +151,22 @@
 
 /* Tablet — 768px */
 @media (min-width: 768px) {
+  .logoStrip {
+    --meet-marci-logo-height: 6.25rem;
+    --meet-marci-logo-max-width: 22rem;
+    --meet-marci-logo-gap: var(--space-10);
+  }
+
+  .actions {
+    width: auto;
+    align-items: center;
+  }
+
+  .actions .btn {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
   .layout {
     flex-direction: row;
     align-items: stretch;
@@ -156,6 +184,12 @@
   .content {
     flex: 1 1 50%;
     max-width: none;
+    padding-inline-start: var(--space-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout .content {
     padding-inline-start: var(--space-12);
   }
 }

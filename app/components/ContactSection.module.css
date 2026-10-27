@@ -2,6 +2,11 @@
   background-color: var(--color-bg);
 }
 
+.inner {
+  width: 100%;
+  min-width: 0;
+}
+
 .intro {
   display: flex;
   flex-direction: column;
@@ -613,11 +618,13 @@ button.btn.btn--primary.submit:not(:disabled):not([aria-disabled="true"]):active
   z-index: 2;
   top: var(--contact-map-card-offset);
   left: var(--contact-map-card-offset);
+  right: var(--contact-map-card-offset);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-1);
-  max-width: var(--contact-map-card-max-width);
+  width: auto;
+  max-width: min(var(--contact-map-card-max-width), 100%);
   padding: var(--space-4);
   background-color: var(--color-bg);
   border: 1px solid var(--contact-divider);
@@ -658,7 +665,7 @@ button.btn.btn--primary.submit:not(:disabled):not([aria-disabled="true"]):active
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .details {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }

@@ -431,48 +431,23 @@ export default function ContactSection() {
 
     if (Object.keys(nextErrors).length > 0) {
       setStatus("error");
+      setSubmitMessage("Please correct the highlighted fields and try again.");
       return;
     }
 
     setStatus("submitting");
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          subject: form.subject,
-          message: form.message.trim(),
-        }),
-      });
+    // Demo only — validates input but does not send email or call the API.
+    await new Promise((resolve) => {
+      window.setTimeout(resolve, 450);
+    });
 
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        if (data.fieldErrors) {
-          setErrors(data.fieldErrors);
-        }
-        setStatus("error");
-        setSubmitMessage(
-          data.error ||
-            "We could not send your confirmation email. Please try again.",
-        );
-        return;
-      }
-
-      setStatus("success");
-      setForm(INITIAL_FORM);
-      setSubmitMessage(
-        "Thank you. A confirmation email with your message details was sent to the address you provided.",
-      );
-    } catch {
-      setStatus("error");
-      setSubmitMessage(
-        "Network error. Check your connection and try again.",
-      );
-    }
+    setStatus("success");
+    setErrors({});
+    setForm(INITIAL_FORM);
+    setSubmitMessage(
+      "Thank you! This is a demo — your message was not emailed. In a live setup, Marci would receive your details.",
+    );
   };
 
   return (
@@ -619,7 +594,11 @@ export default function ContactSection() {
           <form className={styles.form} noValidate onSubmit={handleSubmit}>
             <div className={styles.formIntro}>
               <h3>Contact Us</h3>
-              <p>Fill out the form below and Marci will get back to you as soon as possible.</p>
+              <p>
+                Fill out the form below and Marci will get back to you as soon as
+                possible. Submissions on this site are for demo only — no email is
+                sent.
+              </p>
             </div>
 
             <div className={styles.field}>
@@ -731,21 +710,18 @@ export default function ContactSection() {
                 disabled={status === "submitting"}
                 aria-busy={status === "submitting"}
               >
-                {status === "submitting" ? "Sending…" : "Submit"}
+                {status === "submitting" ? "Submitting…" : "Submit"}
                 <ArrowRightIcon />
               </button>
               <p
                 className={
-                  status === "error" && submitMessage
+                  status === "error"
                     ? `${styles.status} ${styles.statusError}`
                     : styles.status
                 }
                 role="status"
                 aria-live="polite"
               >
-                {status === "error" && !submitMessage
-                  ? "Please correct the highlighted fields and try again."
-                  : null}
                 {submitMessage || null}
               </p>
             </div>
