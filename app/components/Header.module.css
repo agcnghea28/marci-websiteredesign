@@ -88,6 +88,14 @@
   align-items: center;
   gap: var(--space-4);
   flex-shrink: 0;
+  min-width: 0;
+}
+
+.endSearchOpen {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  min-width: 0;
 }
 
 .nav {
@@ -104,6 +112,39 @@
 
   .nav {
     display: flex;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    min-width: 0;
+    transition:
+      max-width var(--transition-base),
+      opacity var(--transition-base),
+      visibility var(--transition-base);
+  }
+
+  .endSearchOpen .navWithSearch {
+    flex: 0 0 auto;
+    max-width: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    pointer-events: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .endSearchOpen {
+    flex: 0 1 auto;
+    gap: var(--space-3);
+  }
+
+  .endSearchOpen .navWithSearch {
+    flex: 0 1 auto;
+    max-width: none;
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+    pointer-events: auto;
+    justify-content: flex-start;
   }
 }
 
@@ -111,7 +152,108 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.headerSearch {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.headerSearchForm {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  width: min(16rem, 36vw);
+  min-height: 2.5rem;
+  padding-inline: var(--space-3);
+  color: var(--color-nav-text);
+  background-color: color-mix(in srgb, var(--color-white) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 28%, transparent);
+  border-radius: var(--radius-btn);
+  animation: headerSearchIn var(--transition-base) ease;
+}
+
+@media (min-width: 768px) {
+  .headerSearchForm {
+    width: min(18rem, 22rem);
+  }
+}
+
+.headerSearchInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 2.25rem;
+  padding: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--text-small);
+  line-height: var(--leading-snug);
+  color: inherit;
+  background: transparent;
+  border: none;
+}
+
+.headerSearchInput::placeholder {
+  color: color-mix(in srgb, var(--color-nav-text) 72%, transparent);
+}
+
+.headerSearchInput:focus {
+  outline: none;
+}
+
+.headerSearchForm:focus-within {
+  border-color: color-mix(in srgb, var(--color-white) 55%, transparent);
+  background-color: color-mix(in srgb, var(--color-white) 20%, transparent);
+}
+
+.header[data-solid="true"] .headerSearchForm {
+  background-color: color-mix(in srgb, var(--color-white) 10%, transparent);
+}
+
+.headerSearchIconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.headerSearchIconButton svg {
+  display: block;
+  width: var(--space-5);
+  height: var(--space-5);
+  fill: none;
+  stroke: currentColor;
+}
+
+@keyframes headerSearchIn {
+  from {
+    opacity: 0;
+    transform: translateX(0.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav {
+    transition: none;
+  }
+
+  .headerSearchForm {
+    animation: none;
+  }
 }
 
 .iconButton {
@@ -156,6 +298,8 @@
 
 /* Slide-in panel */
 .panel {
+  --menu-panel-padding-x: var(--space-10);
+
   position: fixed;
   top: 0;
   right: 0;
@@ -181,7 +325,7 @@
 .panelHeader {
   display: flex;
   justify-content: flex-end;
-  padding-inline: var(--header-padding-x);
+  padding-inline: var(--menu-panel-padding-x);
   padding-top: var(--header-padding-y);
   padding-bottom: var(--space-4);
 }
@@ -190,7 +334,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  padding-inline: var(--header-padding-x);
+  padding-inline: var(--menu-panel-padding-x);
   padding-bottom: var(--space-8);
 }
 

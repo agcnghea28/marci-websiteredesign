@@ -13,9 +13,33 @@
   border-radius: var(--radius-card);
 }
 
-.image {
-  object-fit: cover;
-  object-position: var(--hero-object-position);
+.imageLayer {
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/meet-marci/marci.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform-origin: center center;
+  transition: transform var(--transition-base);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (hover: hover) {
+  .imageWrap:hover .imageLayer {
+    transform: scale(var(--featured-card-image-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imageLayer {
+    transition: none;
+  }
+
+  .imageWrap:hover .imageLayer {
+    transform: none;
+  }
 }
 
 .content {
@@ -55,6 +79,11 @@
 }
 
 .logoStrip {
+  --meet-marci-logo-height: 6.25rem;
+  --meet-marci-logo-max-width: 22rem;
+  --meet-marci-logo-gap: var(--space-10);
+  --meet-marci-logo-strip-padding-y: var(--space-4);
+
   margin-top: var(--meet-marci-logo-strip-margin-top);
   margin-inline: calc(-1 * var(--section-padding-inline));
   width: calc(100% + (var(--section-padding-inline) * 2));

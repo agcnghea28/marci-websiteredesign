@@ -30,11 +30,20 @@
 
 .cell,
 .cellPrice,
-.advancedWrap,
 .submit {
   grid-column: 1;
   min-width: 0;
   overflow: hidden;
+}
+
+.cellSelect {
+  overflow: visible;
+}
+
+.advancedWrap {
+  grid-column: 1;
+  min-width: 0;
+  overflow: visible;
 }
 
 .submit {
@@ -44,12 +53,6 @@
 @media (max-width: 767px) {
   .advancedWrap .fieldControl {
     min-width: 0;
-  }
-
-  .popover {
-    left: 0;
-    right: auto;
-    width: min(100%, 20rem);
   }
 }
 
@@ -120,6 +123,7 @@
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+  pointer-events: none;
 }
 
 .fieldControl svg:last-child {
@@ -130,29 +134,61 @@
   stroke: var(--color-ink);
 }
 
-.select {
-  flex: 1;
-  min-width: 0;
-  min-height: var(--search-control-min-height);
-  padding: 0;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  appearance: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
+.fieldValue,
+.fieldPlaceholder,
 .advancedLabel {
   flex: 1;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.fieldPlaceholder {
+  color: color-mix(in srgb, var(--color-ink) 72%, transparent);
+}
+
+.dropdownWrap {
+  position: relative;
+  width: 100%;
+}
+
+.optionList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.optionButton {
+  width: 100%;
+  padding-block: var(--space-2);
+  padding-inline: var(--space-3);
+  border: none;
+  border-radius: var(--radius-btn);
+  background-color: transparent;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--search-input-size);
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.optionButton:hover {
+  background-color: color-mix(in srgb, var(--color-ink) 6%, transparent);
+}
+
+.optionButton[aria-selected="true"] {
+  font-weight: var(--weight-semibold);
+  background-color: color-mix(in srgb, var(--color-accent-strong) 12%, transparent);
+}
+
+.optionButton:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 1px;
 }
 
 .advancedWrap .fieldControl {
@@ -295,12 +331,11 @@
 }
 
 .popover {
-  position: absolute;
-  top: calc(100% + var(--space-2));
-  right: 0;
+  position: fixed;
   z-index: var(--z-search-popover);
-  width: min(100%, 20rem);
   padding: var(--space-4);
+  overflow: auto;
+  overscroll-behavior: contain;
   text-align: left;
   color: var(--color-ink);
   background-color: var(--search-popover-surface);
@@ -308,6 +343,103 @@
   border-radius: var(--radius-card);
   box-shadow: 0 var(--space-4) var(--space-8)
     color-mix(in srgb, var(--color-ink) 12%, transparent);
+  -webkit-backdrop-filter: blur(var(--search-blur));
+  backdrop-filter: blur(var(--search-blur));
+}
+
+.selectFieldWrap {
+  position: relative;
+  width: 100%;
+}
+
+.selectField {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--search-control-min-height);
+  padding-block: var(--space-2);
+  padding-inline: var(--space-3);
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--search-input-size);
+  color: var(--color-ink);
+  background-color: transparent;
+  border: 1px solid var(--search-border);
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  text-align: left;
+}
+
+.selectFieldOpen,
+.selectField:focus-visible {
+  border-color: var(--color-accent-strong);
+  outline: 2px solid color-mix(in srgb, var(--color-rose) 35%, transparent);
+  outline-offset: 1px;
+}
+
+.selectFieldValue,
+.selectFieldPlaceholder {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selectFieldPlaceholder {
+  color: color-mix(in srgb, var(--color-ink) 72%, transparent);
+}
+
+.selectFieldMenu {
+  padding: var(--space-1);
+  background-color: var(--search-popover-surface);
+  border: 1px solid var(--search-border);
+  border-radius: var(--radius-btn);
+  box-shadow: 0 var(--space-2) var(--space-4)
+    color-mix(in srgb, var(--color-ink) 10%, transparent);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.selectFieldMenuPortal {
+  position: fixed;
+}
+
+.selectFieldIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--search-icon-color);
+  pointer-events: none;
+}
+
+.selectFieldIcon svg {
+  width: var(--search-icon-size);
+  height: var(--search-icon-size);
+  max-width: var(--search-icon-size);
+  max-height: var(--search-icon-size);
+  fill: none;
+  stroke: var(--search-icon-color);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.selectFieldChevron {
+  display: inline-flex;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.selectFieldChevron svg {
+  width: var(--search-chevron-size);
+  height: var(--search-chevron-size);
+  max-width: var(--search-chevron-size);
+  max-height: var(--search-chevron-size);
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .popoverGrid {
@@ -323,25 +455,13 @@
 }
 
 .popoverField label,
+.popoverFieldLabel,
 .amenities legend {
   font-family: var(--font-body), sans-serif;
   font-size: var(--search-label-size);
   font-weight: var(--weight-medium);
   line-height: var(--leading-snug);
   color: color-mix(in srgb, var(--color-ink) 72%, transparent);
-}
-
-.popoverField select {
-  width: 100%;
-  min-height: var(--search-control-min-height);
-  padding-block: var(--space-2);
-  padding-inline: var(--space-3);
-  font-family: var(--font-body), sans-serif;
-  font-size: var(--search-input-size);
-  color: var(--color-ink);
-  background-color: var(--search-popover-surface);
-  border: 1px solid var(--search-border);
-  border-radius: var(--radius-btn);
 }
 
 .amenities {

@@ -13,8 +13,10 @@ export default function ServiceCard({ service, index }) {
       <div className={styles.media}>
         <Image
           src={service.image}
-          alt=""
+          alt={service.imageAlt ?? ""}
           fill
+          quality={100}
+          unoptimized
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           className={styles.image}
           style={{ objectPosition: service.imagePosition }}

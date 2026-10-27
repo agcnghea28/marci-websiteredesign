@@ -16,6 +16,26 @@
 .image {
   object-fit: cover;
   object-position: var(--hero-object-position);
+  transition: transform var(--transition-base);
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+@media (hover: hover) {
+  .imageWrap:hover .image {
+    transform: scale(var(--featured-card-image-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
+  }
+
+  .imageWrap:hover .image {
+    transform: none;
+  }
 }
 
 .content {

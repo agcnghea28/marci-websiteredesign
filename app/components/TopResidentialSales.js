@@ -7,9 +7,10 @@ export default function TopResidentialSales() {
       <div className={styles.layout}>
         <div className={styles.imageWrap}>
           <Image
-            src="/images/hero/hero.webp"
+            src="/images/top-residential-sales/top-residential-sales-v1.jpg"
             alt="Homes in the Pahrump, Nevada area"
             fill
+            quality={100}
             sizes="(min-width: 768px) 42%, 100%"
             className={styles.image}
           />

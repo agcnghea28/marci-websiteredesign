@@ -4,66 +4,84 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./FeaturedProperties.module.css";
 
+const EXPLORE_ALL_URL = "https://marcimetzger.com/listings";
+
+function googleMapsSearchUrl(address) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    address,
+  )}`;
+}
+
 const PROPERTIES = [
   {
-    id: "desert-vista",
-    title: "Desert Vista Estate",
-    location: "Pahrump, Nevada",
+    id: "the-luxury-estate",
+    status: "Active",
+    title: "The Luxury Estate",
+    location: "4751 W Adkisson Street, Pahrump, Nevada 89060-3541",
     beds: 4,
-    baths: 3,
-    garages: 1,
-    sqft: "2,450",
-    price: "$485,000",
-    image: "/images/hero/hero.webp",
-    href: "#contact",
+    baths: 5,
+    garages: 4,
+    sqft: "5,530",
+    price: "$1,850,000",
+    image: "/images/featured/01-the-luxury-estate.jpg",
+    href:
+      "https://theridgerealty.idxbroker.com/idx/details/listing/c015/2743604/4751-W-Adkisson-Street-Pahrump-NV-89060",
   },
   {
-    id: "mountain-ridge",
-    title: "Mountain Ridge Home",
-    location: "Pahrump, Nevada",
+    id: "broken-arrows-ranch",
+    status: "Active",
+    title: "Broken Arrows Ranch",
+    location: "4892 Quail Run Road, Pahrump, Nevada 89060-3002",
     beds: 3,
     baths: 2,
-    garages: 1,
-    sqft: "1,890",
-    price: "$365,000",
-    image: "/images/hero/hero.webp",
-    href: "#contact",
+    garages: 3,
+    sqft: "1,950",
+    price: "$1,080,000",
+    image: "/images/featured/02-broken-arrows-ranch.jpg",
+    href:
+      "https://theridgerealty.idxbroker.com/idx/details/listing/c015/2779103/4892-Quail-Run-Road-Pahrump-NV-89060",
   },
   {
-    id: "sunset-ranch",
-    title: "Sunset Ranch Retreat",
-    location: "Pahrump, Nevada",
-    beds: 5,
-    baths: 3.5,
-    garages: 1,
-    sqft: "3,120",
-    price: "$625,000",
-    image: "/images/hero/hero.webp",
-    href: "#contact",
-  },
-  {
-    id: "valley-oasis",
-    title: "Valley Oasis Residence",
-    location: "Pahrump, Nevada",
-    beds: 3,
-    baths: 2.5,
-    garages: 1,
-    sqft: "2,100",
-    price: "$419,000",
-    image: "/images/hero/hero.webp",
-    href: "#contact",
-  },
-  {
-    id: "highland-haven",
-    title: "Highland Haven",
-    location: "Pahrump, Nevada",
+    id: "the-peggy-estate",
+    status: "Active",
+    title: "The Peggy Estate",
+    location: "3200 Peggy Avenue, Pahrump, Nevada 89048-9465",
     beds: 4,
     baths: 3,
-    garages: 1,
-    sqft: "2,780",
-    price: "$549,000",
-    image: "/images/hero/hero.webp",
-    href: "#contact",
+    garages: 2,
+    sqft: "2,886",
+    price: "$814,000",
+    image: "/images/featured/03-the-peggy-estate.jpg",
+    href:
+      "https://theridgerealty.idxbroker.com/idx/details/listing/c015/2743294/3200-Peggy-Avenue-Pahrump-NV-89048",
+  },
+  {
+    id: "the-winery-residence",
+    status: "Active",
+    title: "The Winery Residence",
+    location: "2181 E Winery Road, Pahrump, Nevada 89048-6294",
+    beds: 5,
+    baths: 5,
+    garages: 2,
+    sqft: "3,716",
+    price: "$777,777",
+    image: "/images/featured/04-the-winery-residence.jpg",
+    href:
+      "https://theridgerealty.idxbroker.com/idx/details/listing/c015/2807457/2181-E-Winery-Road-Pahrump-NV-89048",
+  },
+  {
+    id: "the-greenbriar-retreat",
+    status: "Active",
+    title: "The Greenbriar Retreat",
+    location: "6671 Greenbriar Court, Pahrump, Nevada 89061-7774",
+    beds: 5,
+    baths: 3,
+    garages: 3,
+    sqft: "3,402",
+    price: "$789,000",
+    image: "/images/featured/05-the-greenbriar-retreat.jpg",
+    href:
+      "https://theridgerealty.idxbroker.com/idx/details/listing/c015/2808336/6671-Greenbriar-Court-Pahrump-NV-89061",
   },
 ];
 
@@ -292,6 +310,7 @@ export default function FeaturedProperties() {
 
   return (
     <section id="properties" className="section">
+      <div className={styles.inner}>
       <div className={styles.intro}>
         <div className={styles.introText}>
           <h2>Featured Properties</h2>
@@ -299,7 +318,12 @@ export default function FeaturedProperties() {
             Explore homes and properties available in Pahrump, Nevada.
           </p>
         </div>
-        <a href="#search" className={`btn btn--outline ${styles.exploreAll}`}>
+        <a
+          href={EXPLORE_ALL_URL}
+          className={`btn btn--outline ${styles.exploreAll}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Explore All
           <ArrowRightIcon />
         </a>
@@ -319,12 +343,13 @@ export default function FeaturedProperties() {
           {PROPERTIES.map((property) => (
             <li key={property.id} className={styles.card}>
               <div className={styles.imageWrap}>
-                <span className={styles.status}>Active</span>
+                <span className={styles.status}>{property.status}</span>
                 <Image
                   src={property.image}
-                  alt=""
+                  alt={property.title}
                   fill
                   draggable={false}
+                  quality={100}
                   sizes="(min-width: 1024px) 32vw, (min-width: 768px) 42vw, 88vw"
                   className={styles.image}
                 />
@@ -333,7 +358,14 @@ export default function FeaturedProperties() {
                 <h3 className={styles.title}>{property.title}</h3>
                 <p className={styles.location}>
                   <MapPinIcon />
-                  {property.location}
+                  <a
+                    href={googleMapsSearchUrl(property.location)}
+                    className={styles.locationLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {property.location}
+                  </a>
                 </p>
                 <dl className={styles.specGrid}>
                   <div className={styles.specItem}>
@@ -372,6 +404,8 @@ export default function FeaturedProperties() {
                   <a
                     href={property.href}
                     className={`btn btn--primary ${styles.viewProperty}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     View Property
                   </a>
@@ -399,6 +433,7 @@ export default function FeaturedProperties() {
           ))}
         </ol>
       </nav>
+      </div>
     </section>
   );
 }

@@ -1,0 +1,253 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  background-color: var(--color-footer-bg);
+  color: var(--color-white);
+}
+
+.footer p {
+  max-width: none;
+  color: var(--footer-muted);
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+
+.ctaTitle {
+  color: var(--color-white);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.rule {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--footer-divider);
+}
+
+.columns {
+  display: grid;
+  align-items: start;
+  gap: var(--space-10);
+}
+
+.brand,
+.explore,
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.brand {
+  gap: var(--space-2);
+}
+
+.explore,
+.contact {
+  gap: var(--space-4);
+}
+
+.logo {
+  display: inline-flex;
+  max-width: var(--footer-logo-max-width);
+  color: inherit;
+  text-decoration: none;
+}
+
+.logoImage {
+  width: auto;
+  max-width: var(--footer-logo-max-width);
+  height: var(--footer-logo-height);
+  filter: var(--logo-filter-light);
+}
+
+.brand h3 {
+  color: var(--color-white);
+}
+
+.brand p {
+  margin-top: var(--space-2);
+}
+
+.linkList,
+.socials {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.linkList {
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.explore a,
+.contact > a,
+.policies a {
+  color: var(--color-white);
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--text-nav);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  text-transform: none;
+  text-decoration: none;
+}
+
+.explore > .eyebrow,
+.contact > .eyebrow {
+  font-weight: var(--weight-semibold);
+}
+
+.explore a,
+.contact > a,
+.policies a {
+  transition: color var(--transition-base);
+}
+
+.explore a:hover,
+.explore a:focus-visible,
+.contact > a:hover,
+.contact > a:focus-visible,
+.policies a:hover,
+.policies a:focus-visible,
+.socials a:hover,
+.socials a:focus-visible {
+  color: var(--color-nav-hover);
+}
+
+.socials {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.socials li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.socials a:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+.socialIcon {
+  display: block;
+  width: var(--footer-social-size);
+  height: var(--footer-social-size);
+  max-width: var(--footer-social-size);
+  max-height: var(--footer-social-size);
+  object-fit: contain;
+  transition:
+    filter var(--transition-base),
+    transform var(--transition-base);
+}
+
+.socialIconInstagram {
+  transform: scale(1.14);
+  transform-origin: center;
+}
+
+@media (hover: hover) {
+  .socials a:hover .socialIcon,
+  .socials a:focus-visible .socialIcon {
+    filter: brightness(0) saturate(100%) invert(72%) sepia(22%) saturate(640%)
+      hue-rotate(314deg) brightness(98%) contrast(92%);
+  }
+
+  .socials a:hover .socialIconInstagram,
+  .socials a:focus-visible .socialIconInstagram {
+    transform: scale(1.14);
+  }
+}
+
+.legal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.legal p {
+  font-size: var(--text-small);
+}
+
+.policies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.policies span {
+  color: var(--footer-muted);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    gap: var(--space-12);
+  }
+
+  .cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+  }
+
+  .ctaTitle {
+    max-width: var(--footer-title-max-width);
+  }
+
+  .columns {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-12);
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+
+  .legal {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .columns {
+    grid-template-columns: 1.6fr 0.8fr 1fr;
+  }
+
+  .brand {
+    grid-column: auto;
+  }
+}

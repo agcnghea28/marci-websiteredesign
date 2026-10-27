@@ -10,32 +10,32 @@ const MIN_SET_COUNT = 2;
 
 const LOGOS = [
   {
+    id: "chamber",
+    src: "/images/partners/logo-strip/pahrump-chamber.png",
+    alt: "Pahrump Valley Chamber of Commerce",
+    width: 1024,
+    height: 1024,
+  },
+  {
     id: "ridge",
-    src: "/images/logo/logo.webp",
+    src: "/images/partners/logo-strip/ridge-realty.png",
     alt: "The Ridge Realty Group",
-    width: 160,
-    height: 80,
+    width: 1024,
+    height: 1024,
   },
   {
     id: "equal-housing",
-    src: "/images/partners/equal-housing.svg",
+    src: "/images/partners/logo-strip/equal-housing.png",
     alt: "Equal Housing Opportunity",
-    width: 64,
-    height: 64,
+    width: 1024,
+    height: 1024,
   },
   {
     id: "realtor",
-    src: "/images/partners/realtor.svg",
+    src: "/images/partners/logo-strip/realtor.png",
     alt: "REALTOR®",
-    width: 120,
-    height: 48,
-  },
-  {
-    id: "chamber",
-    src: "/images/partners/pahrump-chamber.svg",
-    alt: "Pahrump Valley Chamber of Commerce",
-    width: 200,
-    height: 80,
+    width: 1024,
+    height: 1024,
   },
 ];
 
@@ -239,6 +239,7 @@ export default function LogoMarquee() {
                   alt={isDuplicate ? "" : logo.alt}
                   width={logo.width}
                   height={logo.height}
+                  unoptimized
                   className={styles.logoImage}
                   draggable={false}
                 />

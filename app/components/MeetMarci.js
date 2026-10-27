@@ -1,21 +1,20 @@
-import Image from "next/image";
 import LogoMarquee from "./LogoMarquee";
 import styles from "./MeetMarci.module.css";
 
+const PHONE_DISPLAY = "(206) 919-6886";
 const PHONE_HREF = "tel:+12069196886";
 
 export default function MeetMarci() {
   return (
     <section id="about" className="section">
+      <div className={styles.inner}>
       <div className={styles.layout}>
-        <div className={styles.imageWrap}>
-          <Image
-            src="/images/hero/hero.webp"
-            alt="Pahrump, Nevada community and homes"
-            fill
-            sizes="(min-width: 768px) 42%, 100%"
-            className={styles.image}
-          />
+        <div
+          className={styles.imageWrap}
+          role="img"
+          aria-label="Marci J. Metzger, Ridge Realty realtor"
+        >
+          <span className={styles.imageLayer} aria-hidden="true" />
         </div>
         <div className={styles.content}>
           <p className="eyebrow">Meet Marci</p>
@@ -37,14 +36,22 @@ export default function MeetMarci() {
             </p>
           </div>
           <div className={styles.actions}>
-            <a href={PHONE_HREF} className="btn btn--primary">
+            <a
+              href={PHONE_HREF}
+              className="btn btn--primary"
+              aria-label={`Call Marci today at ${PHONE_DISPLAY}`}
+            >
               Call Marci Today
             </a>
-            <a href="#contact" className="btn btn--outline">
+            <a
+              href="https://marcimetzger.com/about-us"
+              className="btn btn--outline"
+            >
               Learn More
             </a>
           </div>
         </div>
+      </div>
       </div>
       <LogoMarquee />
     </section>

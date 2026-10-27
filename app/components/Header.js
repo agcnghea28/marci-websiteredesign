@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { goToHeaderSearch } from "../lib/listingSearch";
 import styles from "./Header.module.css";
 
 const LOGO_WIDTH = 1024;
@@ -27,18 +28,17 @@ function LogoMark({ className, priority = false }) {
 
 const PRIMARY_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "Listings", href: "#search" },
-  { label: "Let's Move", href: "#services" },
-  { label: "About Us", href: "#about" },
+  { label: "Listings", href: "https://marcimetzger.com/listings" },
+  { label: "Let's Move", href: "https://marcimetzger.com/lets-move" },
+  { label: "About Us", href: "https://marcimetzger.com/about-us" },
 ];
 
 const MENU_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "About Marci", href: "#about" },
+  { label: "About Marci", href: "https://marcimetzger.com/about-us" },
   { label: "Home Search", href: "#search" },
-  { label: "Properties", href: "#properties" },
+  { label: "Properties", href: "https://marcimetzger.com/listings" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Blog", href: "#blog" },
   { label: "Contact Us", href: "#contact" },
 ];
 
@@ -146,19 +146,26 @@ export default function Header() {
   const [isHidden, setIsHidden] = useState(false);
   const [isSolid, setIsSolid] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [wideNavLayout, setWideNavLayout] = useState(false);
   const headerRef = useRef(null);
   const hamburgerRef = useRef(null);
+  const searchToggleRef = useRef(null);
+  const searchInputRef = useRef(null);
+  const searchWrapRef = useRef(null);
   const panelRef = useRef(null);
   const closeRef = useRef(null);
   const wasMenuOpenRef = useRef(false);
   const lastScrollYRef = useRef(0);
   const scrollTickingRef = useRef(false);
   const menuOpenRef = useRef(false);
+  const searchOpenRef = useRef(false);
   const headerFocusedRef = useRef(false);
   const isHiddenRef = useRef(false);
   const isSolidRef = useRef(false);
 
   menuOpenRef.current = menuOpen;
+  searchOpenRef.current = searchOpen;
   isHiddenRef.current = isHidden;
   isSolidRef.current = isSolid;
 
@@ -202,7 +209,11 @@ export default function Header() {
       }
 
       // Menu open or keyboard focus inside header: keep visible.
-      if (menuOpenRef.current || headerFocusedRef.current) {
+      if (
+        menuOpenRef.current ||
+        searchOpenRef.current ||
+        headerFocusedRef.current
+      ) {
         setHidden(false);
         setSolid(true);
         lastScrollYRef.current = y;
@@ -252,8 +263,61 @@ export default function Header() {
     if (menuOpen) {
       isHiddenRef.current = false;
       setIsHidden(false);
+      setSearchOpen(false);
     }
   }, [menuOpen]);
+
+  useEffect(() => {
+    if (!searchOpen) return undefined;
+
+    isHiddenRef.current = false;
+    setIsHidden(false);
+    setIsSolid(true);
+
+    const onPointerDown = (event) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+
+      if (
+        searchWrapRef.current?.contains(target) ||
+        searchToggleRef.current?.contains(target)
+      ) {
+        return;
+      }
+
+      setSearchOpen(false);
+      searchToggleRef.current?.focus();
+    };
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setSearchOpen(false);
+        searchToggleRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [searchOpen]);
+
+  useEffect(() => {
+    if (!searchOpen) return;
+    searchInputRef.current?.focus();
+  }, [searchOpen]);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1280px)");
+    const update = () => setWideNavLayout(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     if (menuOpen) {
@@ -308,8 +372,31 @@ export default function Header() {
     wasMenuOpenRef.current = menuOpen;
   }, [menuOpen]);
 
-  const handleSearch = () => {
+  const toggleSearch = () => {
+    setSearchOpen((open) => !open);
+  };
+
+  const handleHeaderSearchSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const query = data.get("header-search")?.toString() ?? "";
+
+    setSearchOpen(false);
+
+    if (goToHeaderSearch(query)) {
+      return;
+    }
+
     scrollToId("search");
+    window.requestAnimationFrame(() => {
+      const form = document.getElementById("search");
+      const focusable = form?.querySelector(
+        "button, select, input:not([type='hidden'])",
+      );
+      if (focusable instanceof HTMLElement) {
+        focusable.focus();
+      }
+    });
   };
 
   const handlePanelLinkClick = () => {
@@ -337,24 +424,76 @@ export default function Header() {
             <LogoMark className={styles.logoImage} priority />
           </a>
 
-          <div className={styles.end}>
-            <nav className={styles.nav} aria-label="Primary">
+          <div
+            className={`${styles.end} ${searchOpen ? styles.endSearchOpen : ""}`}
+          >
+            <nav
+              className={`${styles.nav} ${searchOpen ? styles.navWithSearch : ""}`}
+              aria-label="Primary"
+              aria-hidden={searchOpen && !wideNavLayout ? "true" : undefined}
+            >
               {PRIMARY_LINKS.map((link) => (
-                <a key={link.href} href={link.href} className="nav-link">
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="nav-link"
+                  tabIndex={searchOpen && !wideNavLayout ? -1 : undefined}
+                >
                   {link.label}
                 </a>
               ))}
             </nav>
 
             <div className={styles.actions}>
-              <button
-                type="button"
-                className={styles.iconButton}
-                aria-label="Search listings"
-                onClick={handleSearch}
-              >
-                <SearchIcon />
-              </button>
+              <div ref={searchWrapRef} className={styles.headerSearch}>
+                {searchOpen ? (
+                  <form
+                    className={styles.headerSearchForm}
+                    role="search"
+                    aria-label="Search listings"
+                    onSubmit={handleHeaderSearchSubmit}
+                  >
+                    <label
+                      className={styles.visuallyHidden}
+                      htmlFor="header-search"
+                    >
+                      Search
+                    </label>
+                    <input
+                      ref={searchInputRef}
+                      id="header-search"
+                      type="search"
+                      name="header-search"
+                      className={styles.headerSearchInput}
+                      placeholder="Search"
+                      autoComplete="off"
+                    />
+                    <button
+                      ref={searchToggleRef}
+                      type="button"
+                      className={styles.headerSearchIconButton}
+                      aria-label="Close search"
+                      aria-expanded="true"
+                      aria-controls="header-search"
+                      onClick={toggleSearch}
+                    >
+                      <SearchIcon />
+                    </button>
+                  </form>
+                ) : (
+                  <button
+                    ref={searchToggleRef}
+                    type="button"
+                    className={styles.iconButton}
+                    aria-label="Search listings"
+                    aria-expanded="false"
+                    aria-controls="header-search"
+                    onClick={toggleSearch}
+                  >
+                    <SearchIcon />
+                  </button>
+                )}
+              </div>
               <button
                 ref={hamburgerRef}
                 type="button"

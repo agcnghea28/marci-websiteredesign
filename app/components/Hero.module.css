@@ -24,7 +24,8 @@
   box-sizing: border-box;
 }
 
-/* Gradient fallback while hero image loads */
+/* Gradient fallback while hero image loads. The frame is taller than the
+   hero so the scroll parallax can shift it without exposing the edges. */
 .heroBackground {
   position: absolute;
   inset: 0;
@@ -37,9 +38,25 @@
   );
 }
 
+.heroImageFrame {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -40%;
+  height: 160%;
+  will-change: transform;
+}
+
 .heroImage {
   object-fit: cover;
   object-position: var(--hero-object-position);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImageFrame {
+    top: 0;
+    height: 100%;
+  }
 }
 
 /* Vertical gradient — darker top for header, stronger mid for copy readability */

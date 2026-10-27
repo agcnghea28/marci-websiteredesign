@@ -7,10 +7,12 @@ export default function GuideToBuyers() {
       <div className={styles.layout}>
         <div className={styles.imageWrap}>
           <Image
-            src="/images/hero/hero.webp"
-            alt="Homes available in Pahrump, Nevada"
+            src="/images/guide-to-buyers/guide-to-buyers.jpg"
+            alt="Hand holding house keys in front of colorful model homes"
             fill
-            sizes="(min-width: 768px) 42%, 100%"
+            quality={100}
+            unoptimized
+            sizes="(min-width: 768px) 42%, 100vw"
             className={styles.image}
           />
         </div>
@@ -24,7 +26,10 @@ export default function GuideToBuyers() {
               dial, &amp; more!
             </p>
           </div>
-          <a href="#search" className="btn btn--primary">
+          <a
+            href="https://marcimetzger.com/listings"
+            className="btn btn--primary"
+          >
             Browse Properties
           </a>
         </div>

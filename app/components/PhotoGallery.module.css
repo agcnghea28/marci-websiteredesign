@@ -1,0 +1,321 @@
+.section {
+  padding-block: var(--section-padding-y);
+  padding-inline: 0;
+  scroll-margin-top: var(--header-height);
+}
+
+.inner {
+  padding-inline: var(--section-padding-inline);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gallery-header-gap);
+  width: 100%;
+}
+
+.headerPrimary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--measure);
+}
+
+.description {
+  margin: 0;
+  max-width: var(--gallery-description-max-width);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+}
+
+.carouselWrap {
+  position: relative;
+  margin-top: var(--gallery-title-gap);
+  width: 100%;
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  will-change: transform;
+}
+
+.trackDragging,
+.trackDragging .slideButton {
+  cursor: grabbing;
+}
+
+.slide {
+  flex: 0 0 var(--gallery-slide-width);
+  width: var(--gallery-slide-width);
+}
+
+.slideButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  appearance: none;
+}
+
+.slideButton:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+.imageFrame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--gallery-slide-aspect-ratio);
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.image {
+  object-fit: cover;
+  object-position: var(--hero-object-position);
+  transition: transform var(--gallery-image-transition);
+}
+
+.imageScrim {
+  position: absolute;
+  inset: 0;
+  background-color: var(--gallery-image-overlay);
+  pointer-events: none;
+  transition: opacity var(--gallery-image-transition);
+}
+
+@media (hover: hover) {
+  .slideButton:hover .imageScrim,
+  .slideButton:focus-visible .imageScrim {
+    opacity: 0;
+  }
+
+  .slideButton:hover .image,
+  .slideButton:focus-visible .image {
+    transform: scale(var(--gallery-image-scale));
+  }
+}
+
+@media (hover: none) {
+  .imageScrim {
+    opacity: 0.35;
+  }
+
+  .slideButton:active .imageScrim {
+    opacity: 0;
+  }
+
+  .slideButton:active .image {
+    transform: scale(var(--gallery-image-scale));
+  }
+}
+
+.navigation {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: var(--gallery-dots-offset);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.dotsPill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gallery-dots-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dot,
+.dotActive {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: var(--gallery-dot-hit-padding);
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  appearance: none;
+}
+
+.dot::after,
+.dotActive::after {
+  content: "";
+  display: block;
+  height: var(--featured-dot-size);
+  border-radius: var(--featured-dot-radius);
+  background-color: var(--gallery-dot-color);
+  transition:
+    width var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.dot::after {
+  width: var(--featured-dot-size);
+}
+
+.dot:focus-visible,
+.dotActive:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .dot:hover::after {
+    background-color: color-mix(in srgb, var(--color-white) 72%, transparent);
+  }
+}
+
+.dotActive::after {
+  width: var(--featured-dot-active-width);
+  background-color: var(--gallery-dot-color-active);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-gallery-lightbox);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gallery-lightbox-padding);
+}
+
+.lightboxBackdrop {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background-color: var(--gallery-lightbox-backdrop);
+  cursor: pointer;
+  appearance: none;
+}
+
+.lightboxPanel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  max-width: var(--gallery-lightbox-max-width);
+  pointer-events: none;
+}
+
+.lightboxClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+  padding: var(--space-2);
+  border: 1px solid var(--color-white);
+  border-radius: var(--radius-btn);
+  background-color: transparent;
+  color: var(--color-white);
+  cursor: pointer;
+  pointer-events: auto;
+  appearance: none;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.lightboxClose svg {
+  width: var(--space-6);
+  height: var(--space-6);
+  max-width: var(--space-6);
+  max-height: var(--space-6);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (hover: hover) {
+  .lightboxClose:hover {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+  }
+}
+
+.lightboxClose:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+.lightboxImageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: var(--gallery-lightbox-max-height);
+  pointer-events: auto;
+}
+
+.lightboxImage {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: var(--gallery-lightbox-max-height);
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-10);
+  }
+
+  .description {
+    margin-inline-start: auto;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image,
+  .imageScrim {
+    transition: none;
+  }
+}

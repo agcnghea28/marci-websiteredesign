@@ -116,6 +116,57 @@
   --featured-dot-hit-padding: var(--space-1);
   --featured-dot-color: color-mix(in srgb, var(--color-ink) 32%, transparent);
   --featured-dot-color-active: var(--color-ink);
+  /* Photo gallery — full-bleed portrait carousel */
+  --gallery-title-gap: var(--services-title-gap);
+  --gallery-header-gap: var(--space-8);
+  --gallery-description-max-width: 22rem;
+  /* ~2 full slides + side peeks on tablet; ~3 on wide desktop */
+  --gallery-slide-width: clamp(15rem, 72vw, 18rem);
+  --gallery-slide-aspect-ratio: 3 / 4;
+  --gallery-marquee-speed: 2.75rem;
+  --gallery-image-overlay: color-mix(in srgb, var(--color-ink) 42%, transparent);
+  --gallery-image-scale: var(--featured-card-image-scale);
+  --gallery-image-transition: 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  --gallery-dots-offset: var(--space-6);
+  --gallery-dots-gap: var(--space-1);
+  --gallery-dot-hit-padding: 0;
+  --gallery-dot-color: color-mix(in srgb, var(--color-white) 52%, transparent);
+  --gallery-dot-color-active: var(--color-white);
+  --gallery-lightbox-backdrop: color-mix(in srgb, var(--color-ink) 72%, transparent);
+  --gallery-lightbox-padding: var(--space-6);
+  --gallery-lightbox-max-width: min(100%, 56rem);
+  --gallery-lightbox-max-height: min(88dvh, 40rem);
+  --z-gallery-lightbox: 220;
+  /* Contact — info row, form, and map */
+  --contact-title-gap: var(--services-title-gap);
+  --contact-intro-gap: var(--space-4);
+  --contact-divider: color-mix(in srgb, var(--color-ink) 12%, transparent);
+  --contact-detail-bg-hover: var(--color-surface);
+  --contact-icon-size: var(--space-6);
+  --contact-icon-stroke: var(--featured-spec-icon-stroke);
+  --contact-icon-color: var(--color-accent-strong);
+  --contact-form-padding: var(--space-8);
+  --contact-meta-color: color-mix(in srgb, var(--color-ink) 72%, transparent);
+  --contact-field-border: color-mix(in srgb, var(--color-ink) 16%, transparent);
+  --contact-field-border-focus: var(--color-ink);
+  --contact-placeholder: color-mix(in srgb, var(--color-ink) 38%, transparent);
+  --contact-label-color: color-mix(in srgb, var(--color-ink) 72%, transparent);
+  --contact-card-shadow: 0 0.75rem 2rem
+    color-mix(in srgb, var(--color-ink) 6%, transparent);
+  --contact-error: var(--color-accent-strong);
+  --contact-success: var(--color-accent-strong);
+  --contact-map-min-height: 20rem;
+  --contact-social-size: var(--space-10);
+  --contact-social-glyph: var(--space-6);
+  --contact-map-card-offset: var(--space-4);
+  --contact-map-card-max-width: 16rem;
+  --contact-message-min-height: calc(var(--space-16) + var(--space-2));
+  --footer-divider: color-mix(in srgb, var(--color-white) 16%, transparent);
+  --footer-muted: color-mix(in srgb, var(--color-white) 72%, transparent);
+  --footer-title-max-width: calc(var(--space-16) * 7);
+  --footer-logo-height: var(--meet-marci-logo-height);
+  --footer-logo-max-width: var(--meet-marci-logo-max-width);
+  --footer-social-size: var(--contact-social-glyph);
   --services-card-min-height: 30rem;
   --services-title-gap: var(--space-12);
   --services-card-overlay-top: color-mix(in srgb, var(--color-ink) 32%, transparent);
@@ -130,13 +181,47 @@
     color-mix(in srgb, var(--color-ink) 72%, transparent);
   --services-card-index-color: color-mix(in srgb, var(--color-white) 72%, transparent);
   --services-card-index-line: color-mix(in srgb, var(--color-white) 24%, transparent);
-  --meet-marci-logo-height: 3.25rem;
-  --meet-marci-logo-max-width: 11rem;
+  --meet-marci-logo-height: 4.25rem;
+  --meet-marci-logo-max-width: 14rem;
   --meet-marci-logo-gap: var(--space-12);
   --meet-marci-logo-strip-margin-top: var(--space-12);
   --meet-marci-logo-strip-padding-y: var(--space-6);
   --meet-marci-logo-strip-bg: var(--color-bg);
   --meet-marci-logo-divider: color-mix(in srgb, var(--color-ink) 12%, transparent);
+  --testimonials-overlay: color-mix(in srgb, var(--color-ink) 72%, transparent);
+  --testimonials-parallax-speed: 0.45;
+  --testimonials-parallax-bleed: 35%;
+  --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-8));
+  --testimonials-inner-padding-y: var(--space-6);
+  --testimonials-title-gap: var(--services-title-gap);
+  --testimonials-card-bg: var(--color-bg);
+  --testimonials-card-max-width: 28rem;
+  --testimonials-card-min-height: 20rem;
+  --testimonials-card-padding: var(--space-10);
+  --testimonials-card-shadow: 0 1rem 2.5rem
+    color-mix(in srgb, var(--color-ink) 18%, transparent);
+  --testimonials-avatar-size: 3.5rem;
+  --testimonials-quote-mark-color: var(--color-accent);
+  --testimonials-quote-mark-size: clamp(2.5rem, 2rem + 1.5vw, 3.5rem);
+  --testimonials-quote-size: var(--text-h4);
+  --testimonials-meta-color: color-mix(in srgb, var(--color-ink) 58%, transparent);
+  --testimonials-attribution-rule: var(--color-accent-strong);
+  --testimonials-carousel-perspective: 75rem;
+  --testimonials-carousel-transition: 450ms ease;
+  --testimonials-card-side-opacity: 0.55;
+  --testimonials-card-side-blur: 0.125rem;
+  --testimonials-card-side-scale: 0.9;
+  --testimonials-card-side-offset: 44%;
+  --testimonials-card-rotate: 22deg;
+  --testimonials-stage-min-height: 32rem;
+  --testimonials-carousel-gap: var(--space-6);
+  --testimonials-nav-size: 3rem;
+  --testimonials-nav-bg: transparent;
+  --testimonials-nav-bg-hover: transparent;
+  --testimonials-nav-color: var(--color-white);
+  --testimonials-nav-color-hover: var(--color-white);
+  --testimonials-nav-border: var(--color-white);
+  --testimonials-nav-border-hover: var(--color-white);
   --btn-hover-lift: -0.125rem;
   --opacity-disabled: 0.5;
 
@@ -190,6 +275,7 @@
   --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
+  --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
 
@@ -199,6 +285,7 @@
      ========================================================================== */
 
   --section-padding-y: var(--space-8);
+  --section-inner-padding-y: var(--space-8);
   --container-max: 1200px;
 
   /* ==========================================================================
@@ -243,7 +330,16 @@
     --hero-padding-bottom: var(--space-10);
     --hero-search-offset-top: var(--space-6);
     --section-padding-y: var(--space-12);
+    --section-inner-padding-y: var(--space-10);
+    --contact-form-padding: var(--space-10);
+    --testimonials-card-max-width: 30rem;
+    --testimonials-card-min-height: 22rem;
+    --testimonials-stage-min-height: 34rem;
+    --testimonials-carousel-gap: var(--space-8);
+    --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-10));
+    --testimonials-inner-padding-y: var(--space-8);
     --featured-card-width: 42%;
+    --gallery-slide-width: clamp(16rem, 42vw, 22rem);
     --featured-card-image-min-height: 17rem;
     --logo-height-tablet: 4.5rem;
     --header-padding-x: 2.5rem;
@@ -259,7 +355,11 @@
   :root {
     --hero-padding-bottom: var(--space-12);
     --section-padding-y: var(--space-12);
+    --testimonials-card-max-width: 32rem;
+    --testimonials-card-min-height: 24rem;
+    --testimonials-stage-min-height: 36rem;
     --featured-card-width: 32%;
+    --gallery-slide-width: clamp(18rem, 34vw, 26rem);
     --featured-card-image-min-height: 20rem;
     --logo-height-desktop: 5rem;
     --header-padding-x: 4rem;
@@ -274,6 +374,9 @@
 @media (min-width: 1280px) {
   :root {
     --section-padding-y: var(--space-16);
+    --section-inner-padding-y: var(--space-12);
+    --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-12));
+    --testimonials-inner-padding-y: var(--space-8);
     --header-padding-x: 5rem;
     --header-padding-y: var(--space-4);
     --header-height: calc(

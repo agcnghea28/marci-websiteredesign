@@ -26,6 +26,7 @@
   min-height: var(--services-card-min-height);
   overflow: hidden;
   border-radius: var(--radius-card);
+  background-color: var(--color-ink);
 }
 
 .cardHeader {
@@ -59,18 +60,26 @@
 
 .media {
   position: absolute;
+  z-index: 0;
   inset: 0;
   overflow: hidden;
   background-color: var(--color-footer-bg);
 }
 
 .image {
+  z-index: 0;
+  inset: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  max-width: none;
   object-fit: cover;
+  transform-origin: center;
   transition: transform var(--transition-base);
 }
 
 .overlay {
   position: absolute;
+  z-index: 1;
   inset: 0;
   background-image: linear-gradient(
     to top,
@@ -78,7 +87,6 @@
     var(--services-card-overlay-mid) 42%,
     var(--services-card-overlay-top) 100%
   );
-  transition: background-image var(--transition-base);
   pointer-events: none;
 }
 
@@ -128,24 +136,6 @@
 @media (hover: hover) {
   .card:hover .image {
     transform: scale(var(--services-card-image-scale));
-  }
-
-  .card:hover .overlay {
-    background-image: linear-gradient(
-      to top,
-      var(--services-card-overlay-bottom-hover) 0%,
-      var(--services-card-overlay-mid) 38%,
-      var(--services-card-overlay-top) 100%
-    );
-  }
-
-  .card:hover .content::before {
-    background-image: linear-gradient(
-      to top,
-      color-mix(in srgb, var(--services-card-content-scrim) 96%, transparent) 0%,
-      color-mix(in srgb, var(--services-card-content-scrim) 80%, transparent) 55%,
-      transparent 100%
-    );
   }
 }
 

@@ -1,0 +1,306 @@
+.section {
+  position: relative;
+  padding-block: var(--testimonials-section-padding-y);
+  padding-inline: 0;
+  overflow: hidden;
+  color: var(--color-white);
+  isolation: isolate;
+  scroll-margin-top: var(--header-height);
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.parallaxImageWrap {
+  position: absolute;
+  inset: calc(-1 * var(--testimonials-parallax-bleed)) 0;
+  will-change: transform;
+}
+
+.parallaxImage {
+  object-fit: cover;
+  object-position: var(--hero-object-position);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--testimonials-overlay);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--testimonials-inner-padding-y);
+  padding-inline: var(--section-padding-inline);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  margin: 0;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-white);
+}
+
+.carousel {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--testimonials-carousel-gap);
+  margin-top: 0;
+}
+
+.stage {
+  position: relative;
+  min-width: 0;
+  min-height: var(--testimonials-stage-min-height);
+  padding-inline: var(--space-2);
+  perspective: var(--testimonials-carousel-perspective);
+  touch-action: pan-x;
+  cursor: grab;
+  user-select: none;
+}
+
+.stageDragging {
+  cursor: grabbing;
+}
+
+.stageDragging .cardSlot {
+  transition: none;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: var(--testimonials-stage-min-height);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cardSlot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(100%, var(--testimonials-card-max-width));
+  margin: 0;
+  transform: translate(-50%, -50%);
+  transition:
+    transform var(--testimonials-carousel-transition),
+    opacity var(--testimonials-carousel-transition),
+    filter var(--testimonials-carousel-transition);
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.cardSlot[data-position="0"] {
+  z-index: 3;
+  opacity: 1;
+  filter: none;
+  transform: translate(calc(-50% + var(--drag-offset-x, 0px)), -50%) rotateY(0deg)
+    scale(1);
+  pointer-events: auto;
+}
+
+.cardSlot[data-position="-1"] {
+  z-index: 2;
+  opacity: var(--testimonials-card-side-opacity);
+  filter: blur(var(--testimonials-card-side-blur));
+  transform: translate(
+      calc(-50% - var(--testimonials-card-side-offset) + var(--drag-offset-x, 0px)),
+      -50%
+    )
+    rotateY(var(--testimonials-card-rotate)) scale(var(--testimonials-card-side-scale));
+}
+
+.cardSlot[data-position="1"] {
+  z-index: 2;
+  opacity: var(--testimonials-card-side-opacity);
+  filter: blur(var(--testimonials-card-side-blur));
+  transform: translate(
+      calc(-50% + var(--testimonials-card-side-offset) + var(--drag-offset-x, 0px)),
+      -50%
+    )
+    rotateY(calc(var(--testimonials-card-rotate) * -1))
+    scale(var(--testimonials-card-side-scale));
+}
+
+.cardSlot[data-position="-2"],
+.cardSlot[data-position="2"],
+.cardSlot[data-position="-3"],
+.cardSlot[data-position="3"] {
+  z-index: 1;
+  opacity: 0;
+  filter: blur(0.25rem);
+  transform: translate(-50%, -50%) scale(0.75);
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--testimonials-nav-size);
+  height: var(--testimonials-nav-size);
+  padding: 0;
+  border: 1px solid var(--testimonials-nav-border);
+  border-radius: var(--radius-btn);
+  background-color: var(--testimonials-nav-bg);
+  color: var(--testimonials-nav-color);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.navButton svg {
+  width: var(--space-6);
+  height: var(--space-6);
+  max-width: var(--space-6);
+  max-height: var(--space-6);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .navButton:hover {
+    background-color: var(--btn-outline-on-dark-bg-hover);
+    border-color: var(--btn-outline-on-dark-bg-hover);
+    color: var(--testimonials-nav-color-hover);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: var(--testimonials-card-max-width);
+  min-height: var(--testimonials-card-min-height);
+  padding: var(--testimonials-card-padding);
+  background-color: var(--testimonials-card-bg);
+  color: var(--color-text);
+  border-radius: var(--radius-card);
+  box-shadow: var(--testimonials-card-shadow);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.avatarWrap {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--testimonials-avatar-size);
+  height: var(--testimonials-avatar-size);
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quoteMark {
+  margin: 0;
+  color: var(--testimonials-quote-mark-color);
+  font-family: var(--font-heading), serif;
+  font-size: var(--testimonials-quote-mark-size);
+  line-height: 1;
+}
+
+.quote {
+  margin: 0;
+  font-style: normal;
+}
+
+.quote p {
+  margin: 0;
+  font-family: var(--font-heading), serif;
+  font-size: var(--testimonials-quote-size);
+  font-weight: var(--weight-semibold);
+  font-style: normal;
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+
+.attribution {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.attributionRule {
+  flex-shrink: 0;
+  width: 2px;
+  background-color: var(--testimonials-attribution-rule);
+}
+
+.attributionText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.name {
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  font-style: normal;
+  color: var(--color-text);
+}
+
+.meta {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--testimonials-meta-color);
+}
+
+@media (max-width: 767px) {
+  .cardSlot[data-position="-1"],
+  .cardSlot[data-position="1"] {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+
+  .navButton {
+    width: var(--space-10);
+    height: var(--space-10);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardSlot {
+    transition: none;
+  }
+}
