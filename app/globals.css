@@ -285,16 +285,16 @@
      Breakpoints: tablet 768px, laptop 1024px, desktop 1280px
      ========================================================================== */
 
-  --section-padding-y: var(--space-8);
-  --section-inner-padding-y: var(--space-8);
+  --section-padding-y: var(--space-12);
+  --section-inner-padding-y: var(--space-12);
   --container-max: 1200px;
 
   /* ==========================================================================
      HEADER AND MENU
      ========================================================================== */
 
-  --header-padding-x: 1rem;
-  --header-padding-y: var(--space-3);
+  --header-padding-x: var(--space-10);
+  --header-padding-y: var(--space-4);
   /* Horizontal inset for header, sections, and in-page content */
   --section-padding-inline: var(--header-padding-x);
   --gutter: var(--section-padding-inline);
@@ -313,15 +313,25 @@
   --logo-filter-light: brightness(0) invert(1);
   /* Hero image crop anchor (adjust x/y as needed) */
   --hero-object-position: center center;
-  --hero-padding-bottom: var(--space-8);
-  --hero-search-offset-top: var(--space-4);
+  --hero-padding-bottom: var(--space-12);
+  --hero-search-offset-top: var(--space-6);
+  --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-10));
+  --testimonials-inner-padding-y: var(--space-10);
 }
 
-/* Phones — tighter search shell */
+/* Phones — search shell spacing (section gutters use mobile tokens above) */
 @media (max-width: 767px) {
   :root {
-    --search-padding: var(--space-3);
-    --search-gap: var(--space-2);
+    --search-padding: var(--space-5);
+    --search-gap: var(--space-3);
+    --contact-form-padding: var(--space-10);
+    --services-card-content-padding: var(--space-8);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --services-card-content-padding: var(--space-8);
   }
 }
 
@@ -330,23 +340,23 @@
   :root {
     --services-card-min-height: 30rem;
     --testimonials-card-padding: var(--space-10);
-    --hero-padding-bottom: var(--space-10);
-    --hero-search-offset-top: var(--space-6);
-    --section-padding-y: var(--space-12);
-    --section-inner-padding-y: var(--space-10);
-    --contact-form-padding: var(--space-10);
+    --hero-padding-bottom: var(--space-12);
+    --hero-search-offset-top: var(--space-8);
+    --section-padding-y: var(--space-16);
+    --section-inner-padding-y: var(--space-12);
+    --contact-form-padding: var(--space-12);
     --testimonials-card-max-width: 30rem;
     --testimonials-card-min-height: 22rem;
     --testimonials-stage-min-height: 34rem;
     --testimonials-carousel-gap: var(--space-8);
-    --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-10));
-    --testimonials-inner-padding-y: var(--space-8);
+    --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-12));
+    --testimonials-inner-padding-y: var(--space-12);
     --featured-card-width: 42%;
     --gallery-slide-width: clamp(16rem, 42vw, 22rem);
     --featured-card-image-min-height: 17rem;
     --logo-height-tablet: 4.5rem;
-    --header-padding-x: 2.5rem;
-    --header-padding-y: var(--space-3);
+    --header-padding-x: var(--space-16);
+    --header-padding-y: var(--space-4);
     --header-height: calc(
       var(--logo-height-tablet) + (var(--header-padding-y) * 2)
     );
@@ -357,7 +367,13 @@
 @media (min-width: 1024px) {
   :root {
     --hero-padding-bottom: var(--space-12);
+    --hero-search-offset-top: var(--space-6);
     --section-padding-y: var(--space-12);
+    --section-inner-padding-y: var(--space-10);
+    --contact-form-padding: var(--space-10);
+    --services-card-content-padding: var(--space-6);
+    --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-10));
+    --testimonials-inner-padding-y: var(--space-8);
     --testimonials-card-max-width: 32rem;
     --testimonials-card-min-height: 24rem;
     --testimonials-stage-min-height: 36rem;
@@ -400,7 +416,14 @@
 
 .section {
   padding-block: var(--section-padding-y);
-  padding-inline: var(--section-padding-inline);
+  padding-inline-start: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-left, 0px)
+  );
+  padding-inline-end: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-right, 0px)
+  );
   scroll-margin-top: var(--header-height);
 }
 
@@ -420,7 +443,14 @@
 .container-style {
   width: 100%;
   max-width: 100%;
-  padding-inline: var(--section-padding-inline);
+  padding-inline-start: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-left, 0px)
+  );
+  padding-inline-end: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-right, 0px)
+  );
 }
 
 #home {

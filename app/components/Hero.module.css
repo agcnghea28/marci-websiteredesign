@@ -4,7 +4,14 @@
   flex-direction: column;
   min-height: 100dvh;
   overflow: hidden;
-  padding-inline: var(--section-padding-inline);
+  padding-inline-start: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-left, 0px)
+  );
+  padding-inline-end: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-right, 0px)
+  );
   color: var(--color-white);
   text-align: center;
 }
@@ -81,8 +88,8 @@
   gap: var(--space-4);
   width: 100%;
   margin-inline: auto;
-  padding-block: var(--space-6);
-  padding-top: calc(var(--header-height) + var(--space-4));
+  padding-block: var(--space-8);
+  padding-top: calc(var(--header-height) + var(--space-6));
   padding-inline: 0;
 }
 
@@ -98,14 +105,12 @@
 .displayTitle {
   font-size: var(--text-display);
   max-width: 100%;
-  padding-inline: var(--space-2);
   margin-inline: auto;
   overflow-wrap: break-word;
 }
 
 .lead {
   max-width: var(--measure);
-  padding-inline: var(--space-2);
   margin-inline: auto;
   color: var(--color-white);
 }
@@ -117,7 +122,6 @@
   gap: var(--space-4);
   width: 100%;
   max-width: var(--measure);
-  padding-inline: var(--space-2);
   margin-inline: auto;
 }
 

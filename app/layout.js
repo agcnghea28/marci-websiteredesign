@@ -22,6 +22,12 @@ export const metadata = {
     "Marci Metzger is a Pahrump, Nevada real estate agent with nearly three decades of experience helping buyers and sellers in the desert community.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>

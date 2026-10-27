@@ -39,7 +39,7 @@
   justify-content: flex-start;
   gap: var(--space-6);
   min-width: 0;
-  padding: var(--space-6);
+  padding: var(--space-8);
   border: 1px solid var(--contact-divider);
   background-color: var(--color-bg);
   transition: background-color var(--transition-base);
@@ -294,8 +294,14 @@
 .layout {
   display: grid;
   align-items: stretch;
-  gap: var(--space-8);
+  gap: var(--space-10);
   margin-top: var(--contact-title-gap);
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    gap: var(--space-8);
+  }
 }
 
 .form {
@@ -662,6 +668,12 @@ button.btn.btn--primary.submit:not(:disabled):not([aria-disabled="true"]):active
 @media (min-width: 768px) {
   .details {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .detail {
+    padding: var(--space-6);
   }
 }
 

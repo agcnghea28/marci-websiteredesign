@@ -73,8 +73,8 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: auto;
   scroll-padding-inline-start: 0;
-  scroll-padding-inline-end: var(--space-6);
-  padding-inline-end: var(--space-6);
+  scroll-padding-inline-end: var(--section-padding-inline);
+  padding-inline-end: var(--section-padding-inline);
   padding-bottom: var(--space-2);
   touch-action: pan-x;
   cursor: grab;
@@ -164,7 +164,13 @@
   flex: 1;
   flex-direction: column;
   gap: var(--space-4);
-  padding: var(--space-6);
+  padding: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .body {
+    padding: var(--space-6);
+  }
 }
 
 .title {

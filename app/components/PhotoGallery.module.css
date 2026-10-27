@@ -5,7 +5,14 @@
 }
 
 .inner {
-  padding-inline: var(--section-padding-inline);
+  padding-inline-start: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-left, 0px)
+  );
+  padding-inline-end: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-right, 0px)
+  );
 }
 
 .header {

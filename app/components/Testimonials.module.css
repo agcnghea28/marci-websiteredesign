@@ -36,7 +36,14 @@
   position: relative;
   z-index: 1;
   padding-block: var(--testimonials-inner-padding-y);
-  padding-inline: var(--section-padding-inline);
+  padding-inline-start: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-left, 0px)
+  );
+  padding-inline-end: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-right, 0px)
+  );
 }
 
 .intro {
@@ -67,7 +74,7 @@
   position: relative;
   min-width: 0;
   min-height: var(--testimonials-stage-min-height);
-  padding-inline: var(--space-2);
+  padding-inline: 0;
   perspective: var(--testimonials-carousel-perspective);
   touch-action: pan-x;
   cursor: grab;

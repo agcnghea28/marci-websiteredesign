@@ -157,8 +157,15 @@ section.bleed {
   justify-content: center;
   align-items: flex-start;
   gap: var(--space-6);
-  padding-block: var(--space-8);
-  padding-inline: var(--section-padding-inline);
+  padding-block: var(--section-padding-y);
+  padding-inline-start: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-left, 0px)
+  );
+  padding-inline-end: max(
+    var(--section-padding-inline),
+    env(safe-area-inset-right, 0px)
+  );
   color: var(--color-white);
   text-align: left;
 }

@@ -37,7 +37,14 @@
   max-width: 100%;
   min-width: 0;
   min-height: var(--header-height);
-  padding-inline: var(--header-padding-x);
+  padding-inline-start: max(
+    var(--header-padding-x),
+    env(safe-area-inset-left, 0px)
+  );
+  padding-inline-end: max(
+    var(--header-padding-x),
+    env(safe-area-inset-right, 0px)
+  );
   padding-block: var(--header-padding-y);
   box-sizing: border-box;
 }

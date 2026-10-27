@@ -17,10 +17,16 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+  gap: var(--space-8);
   margin: var(--services-title-gap) 0 0;
   padding: 0;
   list-style: none;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    gap: var(--space-6);
+  }
 }
 
 .card {

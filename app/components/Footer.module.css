@@ -1,9 +1,15 @@
 .footer {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: var(--space-10);
   background-color: var(--color-footer-bg);
   color: var(--color-white);
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    gap: var(--space-8);
+  }
 }
 
 .footer p {
