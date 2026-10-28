@@ -13,14 +13,16 @@ export default function MeetMarci() {
         <div
           className={styles.imageWrap}
           role="img"
-          aria-label="Marci J. Metzger, Ridge Realty realtor"
+          aria-label="Marci J. Metzger, Ridge Realty REALTOR®"
         >
           <span className={styles.imageLayer} aria-hidden="true" />
         </div>
         <div className={styles.content}>
-          <p className="eyebrow">Meet Marci</p>
-          <h2>Marci J. Metzger</h2>
-          <p className={styles.subtitle}>Realtor for Nearly 3 Decades</p>
+          <div className={styles.titleBlock}>
+            <p className="eyebrow">Meet Marci</p>
+            <h2>Marci J. Metzger</h2>
+            <p className={styles.subtitle}>REALTOR® for Nearly 3 Decades</p>
+          </div>
           <div className={styles.copy}>
             <p>
               With a real estate career dating back to 1995, Marci J. Metzger

@@ -41,6 +41,35 @@
   min-width: min(100%, 10rem);
 }
 
+@media (max-width: 767px) {
+  .cta {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .ctaTitle {
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .actions .btn {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    align-self: stretch;
+    box-sizing: border-box;
+  }
+}
+
 .rule {
   width: 100%;
   margin: 0;
@@ -95,6 +124,38 @@
   margin-top: var(--space-2);
 }
 
+@media (max-width: 767px) {
+  .brand {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .brand .logo {
+    align-self: center;
+  }
+
+  .brand h3 {
+    width: 100%;
+  }
+
+  .brand .socials {
+    align-self: center;
+    justify-content: center;
+  }
+
+  .explore,
+  .contact {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .explore .linkList {
+    align-items: center;
+  }
+}
+
 .brand .socials {
   margin-top: var(--space-3);
 }
@@ -120,6 +181,22 @@
   stroke-width: 1.75;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+@media (max-width: 767px) {
+  .contact .detailLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .contact .detailLink svg {
+    margin-top: 0;
+  }
 }
 
 .linkList,
@@ -148,12 +225,7 @@
   text-decoration: none;
 }
 
-.explore > .eyebrow,
-.contact > .eyebrow {
-  font-weight: var(--weight-semibold);
-}
-
-.explore a,
+.explore > a,
 .contact > a,
 .policies a {
   transition: color var(--transition-base);
@@ -251,6 +323,38 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2);
+}
+
+@media (max-width: 767px) {
+  .contact .hours {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .contact .hours > svg {
+    margin-top: 0;
+  }
+
+  .contact .hoursCopy {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .contact .hoursTitle,
+  .contact .hoursCopy > p {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contact .dailyRow {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 .hoursChevron,
@@ -362,6 +466,15 @@
   line-height: var(--leading-snug);
 }
 
+@media (max-width: 767px) {
+  .contact .hoursCopy .hoursHint {
+    width: 100%;
+    max-width: none;
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+
 .socialIcon {
   display: block;
   width: var(--footer-social-size);
@@ -412,6 +525,24 @@
 
 .policies span {
   color: var(--footer-muted);
+}
+
+@media (max-width: 767px) {
+  .legal {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .legal p {
+    width: 100%;
+    text-align: center;
+  }
+
+  .policies {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 @media (min-width: 768px) {

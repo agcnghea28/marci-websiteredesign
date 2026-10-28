@@ -7,7 +7,7 @@ const BACKGROUND_IMAGE = "/images/property-search/the-peggy-estate.jpg";
 
 export default function PropertySearch() {
   return (
-    <section id="property-search" className={styles.section}>
+    <section id="property-search" className={`section ${styles.section}`}>
       <HeroBackground imageSrc={BACKGROUND_IMAGE} />
       <div className={heroStyles.heroOverlay} aria-hidden="true" />
 

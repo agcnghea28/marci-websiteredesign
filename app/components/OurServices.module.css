@@ -8,6 +8,15 @@
   min-width: 0;
 }
 
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--section-eyebrow-title-gap);
+  margin: 0;
+  text-align: center;
+}
+
 .heading {
   margin: 0;
   text-align: center;
@@ -79,9 +88,9 @@
 
 .image {
   z-index: 0;
-  inset: -2px;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
+  inset: -12px;
+  width: calc(100% + 24px);
+  height: calc(100% + 24px);
   max-width: none;
   object-fit: cover;
   transform-origin: center;
@@ -92,12 +101,22 @@
   position: absolute;
   z-index: 1;
   inset: 0;
+  background-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
   background-image: linear-gradient(
     to top,
     var(--services-card-overlay-bottom) 0%,
-    var(--services-card-overlay-mid) 42%,
+    var(--services-card-overlay-mid) 45%,
     var(--services-card-overlay-top) 100%
   );
+  pointer-events: none;
+}
+
+.media::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-ink) 40%, transparent);
   pointer-events: none;
 }
 
@@ -144,9 +163,20 @@
   text-shadow: var(--services-description-shadow);
 }
 
-@media (hover: hover) {
-  .card:hover .image {
+.card:is(:hover, :active, :focus-within) .image {
+  transform: scale(var(--services-card-image-scale));
+}
+
+@media (max-width: 1023px) {
+  .card .image {
     transform: scale(var(--services-card-image-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card .image,
+  .card:is(:hover, :active, :focus-within) .image {
+    transform: none;
   }
 }
 

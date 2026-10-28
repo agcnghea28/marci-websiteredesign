@@ -139,7 +139,8 @@
   --z-gallery-lightbox: 220;
   /* Contact — info row, form, and map */
   --contact-title-gap: var(--services-title-gap);
-  --contact-intro-gap: var(--space-4);
+  --section-eyebrow-title-gap: var(--space-4);
+  --contact-intro-gap: var(--section-eyebrow-title-gap);
   --contact-divider: color-mix(in srgb, var(--color-ink) 12%, transparent);
   --contact-detail-bg-hover: var(--color-surface);
   --contact-icon-size: var(--space-6);
@@ -169,8 +170,8 @@
   --footer-social-size: var(--contact-social-glyph);
   --services-card-min-height: clamp(22rem, 58dvh, 30rem);
   --services-title-gap: var(--space-12);
-  --services-card-overlay-top: color-mix(in srgb, var(--color-ink) 32%, transparent);
-  --services-card-overlay-mid: color-mix(in srgb, var(--color-ink) 48%, transparent);
+  --services-card-overlay-top: color-mix(in srgb, var(--color-ink) 56%, transparent);
+  --services-card-overlay-mid: color-mix(in srgb, var(--color-ink) 52%, transparent);
   --services-card-overlay-bottom: color-mix(in srgb, var(--color-ink) 92%, transparent);
   --services-card-overlay-bottom-hover: color-mix(in srgb, var(--color-ink) 96%, transparent);
   --services-card-content-scrim: color-mix(in srgb, var(--color-ink) 88%, transparent);
@@ -191,8 +192,6 @@
   --testimonials-overlay: color-mix(in srgb, var(--color-ink) 72%, transparent);
   --testimonials-parallax-speed: 0.45;
   --testimonials-parallax-bleed: 35%;
-  --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-8));
-  --testimonials-inner-padding-y: var(--space-6);
   --testimonials-title-gap: var(--services-title-gap);
   --testimonials-card-bg: var(--color-bg);
   --testimonials-card-max-width: 28rem;
@@ -286,8 +285,9 @@
      Breakpoints: tablet 768px, laptop 1024px, desktop 1280px
      ========================================================================== */
 
-  --section-padding-y: var(--space-12);
-  --section-inner-padding-y: var(--space-12);
+  --section-padding: var(--space-12);
+  --section-padding-y: var(--section-padding);
+  --section-padding-inline: var(--section-padding);
   --container-max: 1200px;
 
   /* ==========================================================================
@@ -296,8 +296,6 @@
 
   --header-padding-x: var(--space-10);
   --header-padding-y: var(--space-4);
-  /* Horizontal inset for header, sections, and in-page content */
-  --section-padding-inline: var(--header-padding-x);
   --gutter: var(--section-padding-inline);
   --header-height: calc(
     var(--logo-height-mobile) + (var(--header-padding-y) * 2)
@@ -316,16 +314,16 @@
   --hero-object-position: center center;
   --hero-padding-bottom: var(--space-12);
   --hero-search-offset-top: var(--space-6);
-  --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-10));
-  --testimonials-inner-padding-y: var(--space-10);
 }
 
-/* Phones — search shell spacing (section gutters use mobile tokens above) */
+/* Phones — tighter section insets; search/contact card spacing */
 @media (max-width: 767px) {
   :root {
+    --section-padding: var(--space-8);
+    --services-title-gap: var(--space-8);
     --search-padding: var(--space-5);
     --search-gap: var(--space-3);
-    --contact-form-padding: var(--space-10);
+    --contact-form-padding: var(--space-6);
     --services-card-content-padding: var(--space-8);
   }
 }
@@ -343,15 +341,12 @@
     --testimonials-card-padding: var(--space-10);
     --hero-padding-bottom: var(--space-12);
     --hero-search-offset-top: var(--space-8);
-    --section-padding-y: var(--space-16);
-    --section-inner-padding-y: var(--space-12);
+    --section-padding: var(--space-16);
     --contact-form-padding: var(--space-12);
     --testimonials-card-max-width: 30rem;
     --testimonials-card-min-height: 22rem;
     --testimonials-stage-min-height: 34rem;
     --testimonials-carousel-gap: var(--space-8);
-    --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-12));
-    --testimonials-inner-padding-y: var(--space-12);
     --featured-card-width: 42%;
     --gallery-slide-width: clamp(16rem, 42vw, 22rem);
     --featured-card-image-min-height: 17rem;
@@ -369,12 +364,9 @@
   :root {
     --hero-padding-bottom: var(--space-12);
     --hero-search-offset-top: var(--space-6);
-    --section-padding-y: var(--space-12);
-    --section-inner-padding-y: var(--space-10);
+    --section-padding: var(--space-16);
     --contact-form-padding: var(--space-10);
     --services-card-content-padding: var(--space-6);
-    --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-10));
-    --testimonials-inner-padding-y: var(--space-8);
     --testimonials-card-max-width: 32rem;
     --testimonials-card-min-height: 24rem;
     --testimonials-stage-min-height: 36rem;
@@ -393,10 +385,7 @@
 /* Desktop — 1280px */
 @media (min-width: 1280px) {
   :root {
-    --section-padding-y: var(--space-16);
-    --section-inner-padding-y: var(--space-12);
-    --testimonials-section-padding-y: calc(var(--section-padding-y) + var(--space-12));
-    --testimonials-inner-padding-y: var(--space-8);
+    --section-padding: var(--space-16);
     --header-padding-x: 5rem;
     --header-padding-y: var(--space-4);
     --header-height: calc(

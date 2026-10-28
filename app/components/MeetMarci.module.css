@@ -43,9 +43,16 @@
   }
 }
 
+@media (max-width: 1023px), (hover: none) {
+  .imageLayer {
+    transform: scale(var(--featured-card-image-scale));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .imageLayer {
     transition: none;
+    transform: none;
   }
 
   .imageWrap:hover .imageLayer {
@@ -59,6 +66,18 @@
   align-items: flex-start;
   gap: var(--space-6);
   max-width: var(--measure);
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--section-eyebrow-title-gap);
+  width: 100%;
+}
+
+.titleBlock h2 {
+  margin: 0;
 }
 
 .subtitle {
@@ -93,6 +112,40 @@
 .actions .btn {
   flex: 1 1 calc(50% - var(--space-2));
   min-width: min(100%, 10rem);
+}
+
+/* Mobile — center copy, title, and actions in the column */
+@media (max-width: 767px) {
+  .content {
+    align-items: center;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+
+  .titleBlock {
+    align-items: center;
+  }
+
+  .copy {
+    text-align: center;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .actions .btn {
+    flex: 1 1 100%;
+    max-width: 20rem;
+  }
+
+  .logoStrip {
+    --meet-marci-logo-height: 6rem;
+    --meet-marci-logo-max-width: 20rem;
+    --meet-marci-logo-gap: var(--space-8);
+    --meet-marci-logo-strip-padding-y: var(--space-5);
+  }
 }
 
 .logoStrip {

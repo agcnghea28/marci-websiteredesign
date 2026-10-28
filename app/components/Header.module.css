@@ -195,9 +195,15 @@
 }
 
 .headerSearch {
-  display: flex;
+  display: none;
   align-items: center;
   flex: 0 0 auto;
+}
+
+@media (min-width: 768px) {
+  .headerSearch {
+    display: flex;
+  }
 }
 
 .headerSearchForm {
@@ -343,7 +349,7 @@
   top: 0;
   right: 0;
   z-index: var(--z-menu);
-  width: min(100%, var(--menu-panel-max));
+  width: min(18rem, calc(100% - var(--space-10)));
   height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -364,6 +370,7 @@
 @media (min-width: 768px) {
   .panel {
     --menu-panel-padding-x: var(--space-10);
+    width: min(100%, var(--menu-panel-max));
   }
 }
 

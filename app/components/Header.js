@@ -33,7 +33,7 @@ const PRIMARY_LINKS = [
   { label: "Home", href: HOME_HERO_HREF },
   { label: "Listings", href: COMING_SOON_PATH },
   { label: "Let's Move", href: COMING_SOON_PATH },
-  { label: "About Us", href: COMING_SOON_PATH },
+  { label: "About Marci", href: COMING_SOON_PATH },
 ];
 
 const MENU_LINKS = [

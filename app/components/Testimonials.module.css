@@ -1,11 +1,8 @@
 .section {
   position: relative;
-  padding-block: var(--testimonials-section-padding-y);
-  padding-inline: 0;
   overflow: hidden;
   color: var(--color-white);
   isolation: isolate;
-  scroll-margin-top: var(--header-height);
 }
 
 .background {
@@ -35,22 +32,13 @@
 .inner {
   position: relative;
   z-index: 1;
-  padding-block: var(--testimonials-inner-padding-y);
-  padding-inline-start: max(
-    var(--section-padding-inline),
-    env(safe-area-inset-left, 0px)
-  );
-  padding-inline-end: max(
-    var(--section-padding-inline),
-    env(safe-area-inset-right, 0px)
-  );
 }
 
 .intro {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--section-eyebrow-title-gap);
   margin: 0;
   padding-bottom: 0;
   text-align: center;

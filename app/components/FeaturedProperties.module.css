@@ -14,7 +14,7 @@
 .introText {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--section-eyebrow-title-gap);
   max-width: var(--measure);
 }
 
@@ -41,6 +41,28 @@
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
+}
+
+@media (max-width: 767px) {
+  .intro {
+    align-items: center;
+    text-align: center;
+  }
+
+  .introText {
+    align-items: center;
+    max-width: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .description {
+    margin-inline: auto;
+  }
+
+  .exploreAll {
+    max-width: 20rem;
+  }
 }
 
 /* Tablet — 768px */
@@ -116,13 +138,26 @@
     transform: translateY(var(--featured-card-hover-lift));
   }
 
-  .card:hover .image {
-    transform: scale(var(--featured-card-image-scale));
-  }
-
   .card:hover .status {
     color: var(--featured-status-text-hover);
     background-color: var(--featured-status-bg-hover);
+  }
+}
+
+.card:is(:hover, :active, :focus-within) .image {
+  transform: scale(var(--featured-card-image-scale));
+}
+
+@media (max-width: 1023px) {
+  .card .image {
+    transform: scale(var(--featured-card-image-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card .image,
+  .card:is(:hover, :active, :focus-within) .image {
+    transform: none;
   }
 }
 

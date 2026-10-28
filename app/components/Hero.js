@@ -11,9 +11,9 @@ export default function Hero() {
       <div className={styles.heroInner}>
         <div className={`container ${styles.content}`}>
           <p className="eyebrow eyebrow--on-dark">
-            MARCI METZGER - THE RIDGE REALTY GROUP
+            Marci Metzger - The Ridge Realty Group
           </p>
-          <h1 className={styles.displayTitle}>Pahrump Realtor</h1>
+          <h1 className={styles.displayTitle}>PAHRUMP REALTOR</h1>
           <p className={`lead ${styles.lead}`}>
             Your trusted real estate partner in Pahrump, Nevada.
           </p>

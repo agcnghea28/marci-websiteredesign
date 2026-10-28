@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Marci Metzger Homes | Pahrump Realtor",
+  title: "Marci Metzger Homes | Pahrump REALTOR®",
   description:
     "Marci Metzger is a Pahrump, Nevada real estate agent with nearly three decades of experience helping buyers and sellers in the desert community.",
 };

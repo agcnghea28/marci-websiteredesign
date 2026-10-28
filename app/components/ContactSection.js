@@ -369,11 +369,8 @@ export default function ContactSection() {
         <div className={styles.layout}>
           <form className={styles.form} noValidate onSubmit={handleSubmit}>
             <div className={styles.formIntro}>
-              <h3>Send Marci a Message</h3>
-              <p>
-                Fill out the form below and Marci will get back to you as soon as
-                possible.
-              </p>
+              <h3>Send a Message</h3>
+              <p>Fill out the form and Marci will be in touch soon.</p>
             </div>
 
             <div className={styles.field}>

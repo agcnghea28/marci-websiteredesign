@@ -217,7 +217,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={sectionRef}
-      className={styles.section}
+      className={`section ${styles.section}`}
       aria-labelledby="testimonials-title"
     >
       <div className={styles.background} aria-hidden="true">
@@ -240,9 +240,9 @@ export default function Testimonials() {
 
       <div className={styles.inner}>
         <header className={styles.intro}>
-          <p className="eyebrow eyebrow--on-dark">Client Experiences</p>
+          <p className="eyebrow eyebrow--on-dark">Client Stories</p>
           <h2 id="testimonials-title" className={styles.title}>
-            What Our Clients Say
+            Testimonials
           </h2>
         </header>
 

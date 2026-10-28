@@ -70,6 +70,13 @@
   color: var(--contact-label-color);
 }
 
+@media (max-width: 767px) {
+  .formIntro {
+    align-items: center;
+    text-align: center;
+  }
+}
+
 .field {
   position: relative;
   display: flex;

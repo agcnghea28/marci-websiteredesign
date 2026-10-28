@@ -403,7 +403,7 @@ export default function PhotoGallery() {
       : null;
 
   return (
-    <section id="gallery" className={styles.section}>
+    <section id="gallery" className={`section ${styles.section}`}>
       <div className={styles.inner}>
         <header className={styles.header}>
           <div className={styles.headerPrimary}>

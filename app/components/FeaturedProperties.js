@@ -314,6 +314,7 @@ export default function FeaturedProperties() {
       <div className={styles.inner}>
       <div className={styles.intro}>
         <div className={styles.introText}>
+          <p className="eyebrow">Featured Listings</p>
           <h2>Featured Properties</h2>
           <p className={styles.description}>
             Explore homes and properties available in Pahrump, Nevada.
