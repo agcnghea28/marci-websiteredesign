@@ -6,7 +6,9 @@ import styles from "./Hero.module.css";
 
 const PARALLAX_RATE = 0.35;
 
-export default function HeroBackground() {
+export default function HeroBackground({
+  imageSrc = "/images/hero/hero.png",
+}) {
   const frameRef = useRef(null);
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function HeroBackground() {
     <div className={styles.heroBackground} aria-hidden="true">
       <div ref={frameRef} className={styles.heroImageFrame}>
         <Image
-          src="/images/hero/hero.png"
+          src={imageSrc}
           alt=""
           fill
           preload

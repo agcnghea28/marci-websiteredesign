@@ -2,7 +2,10 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { goToHeaderSearch } from "../lib/listingSearch";
+import {
+  COMING_SOON_PATH,
+  HOME_HERO_HREF,
+} from "../lib/siteRoutes";
 import styles from "./Header.module.css";
 
 const LOGO_WIDTH = 1024;
@@ -27,19 +30,19 @@ function LogoMark({ className, priority = false }) {
 }
 
 const PRIMARY_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "Listings", href: "https://marcimetzger.com/listings" },
-  { label: "Let's Move", href: "https://marcimetzger.com/lets-move" },
-  { label: "About Us", href: "https://marcimetzger.com/about-us" },
+  { label: "Home", href: HOME_HERO_HREF },
+  { label: "Listings", href: COMING_SOON_PATH },
+  { label: "Let's Move", href: COMING_SOON_PATH },
+  { label: "About Us", href: COMING_SOON_PATH },
 ];
 
 const MENU_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "About Marci", href: "https://marcimetzger.com/about-us" },
-  { label: "Home Search", href: "#search" },
-  { label: "Properties", href: "https://marcimetzger.com/listings" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Home", href: HOME_HERO_HREF },
+  { label: "About Marci", href: COMING_SOON_PATH },
+  { label: "Home Search", href: COMING_SOON_PATH },
+  { label: "Properties", href: COMING_SOON_PATH },
+  { label: "Testimonials", href: COMING_SOON_PATH },
+  { label: "Contact Us", href: COMING_SOON_PATH },
 ];
 
 function SearchIcon() {
@@ -378,25 +381,8 @@ export default function Header() {
 
   const handleHeaderSearchSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const query = data.get("header-search")?.toString() ?? "";
-
     setSearchOpen(false);
-
-    if (goToHeaderSearch(query)) {
-      return;
-    }
-
-    scrollToId("search");
-    window.requestAnimationFrame(() => {
-      const form = document.getElementById("search");
-      const focusable = form?.querySelector(
-        "button, select, input:not([type='hidden'])",
-      );
-      if (focusable instanceof HTMLElement) {
-        focusable.focus();
-      }
-    });
+    window.location.assign(COMING_SOON_PATH);
   };
 
   const handlePanelLinkClick = () => {
@@ -420,7 +406,7 @@ export default function Header() {
         }}
       >
         <div className={styles.inner}>
-          <a href="#home" className={styles.logo}>
+          <a href={HOME_HERO_HREF} className={styles.logo}>
             <LogoMark className={styles.logoImage} priority />
           </a>
 
@@ -434,7 +420,7 @@ export default function Header() {
             >
               {PRIMARY_LINKS.map((link) => (
                 <a
-                  key={link.href}
+                  key={link.label}
                   href={link.href}
                   className="nav-link"
                   tabIndex={searchOpen && !wideNavLayout ? -1 : undefined}
@@ -469,13 +455,9 @@ export default function Header() {
                       autoComplete="off"
                     />
                     <button
-                      ref={searchToggleRef}
-                      type="button"
+                      type="submit"
                       className={styles.headerSearchIconButton}
-                      aria-label="Close search"
-                      aria-expanded="true"
-                      aria-controls="header-search"
-                      onClick={toggleSearch}
+                      aria-label="Search listings"
                     >
                       <SearchIcon />
                     </button>
@@ -541,7 +523,7 @@ export default function Header() {
         <nav className={styles.panelNav} aria-label="Mobile">
           {MENU_LINKS.map((link) => (
             <a
-              key={link.href + link.label}
+              key={link.label}
               href={link.href}
               className="nav-link"
               tabIndex={menuOpen ? 0 : -1}

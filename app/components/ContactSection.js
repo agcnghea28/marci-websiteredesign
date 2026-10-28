@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import {
   useCallback,
   useEffect,
@@ -19,8 +18,6 @@ const SUBJECT_MENU_MAX_HEIGHT = 12 * 16;
 const SUBJECT_PLACEHOLDER = "Select a subject";
 
 const ADDRESS = "3190 HW-160, Suite F, Pahrump, Nevada 89048, United States";
-const PHONE_DISPLAY = "(206) 919-6886";
-const PHONE_TEL = "+12069196886";
 const MAP_LAT = 36.184249;
 const MAP_LNG = -115.955253;
 const MAP_QUERY = encodeURIComponent(ADDRESS);
@@ -28,45 +25,6 @@ const MAP_SRC = `https://maps.google.com/maps?q=${MAP_LAT},${MAP_LNG}+(${MAP_QUE
 const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   ADDRESS,
 )}`;
-
-const DAILY_HOURS = "8:00 am – 7:00 pm";
-
-const WEEK_HOURS = [
-  { id: "sunday", label: "Sunday" },
-  { id: "monday", label: "Monday" },
-  { id: "tuesday", label: "Tuesday" },
-  { id: "wednesday", label: "Wednesday" },
-  { id: "thursday", label: "Thursday" },
-  { id: "friday", label: "Friday" },
-  { id: "saturday", label: "Saturday" },
-];
-
-const SOCIALS = [
-  {
-    id: "yelp",
-    label: "Yelp",
-    href: "https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w",
-    iconSrc: "/images/social/yelp.png",
-  },
-  {
-    id: "linkedin",
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/marci-metzger-30642496/",
-    iconSrc: "/images/social/linkedin.png",
-  },
-  {
-    id: "instagram",
-    label: "Instagram",
-    href: "https://www.instagram.com/marcimetzger_theridge/",
-    iconSrc: "/images/social/instagram.png",
-  },
-  {
-    id: "facebook",
-    label: "Facebook",
-    href: "https://www.facebook.com/MarciHomes/",
-    iconSrc: "/images/social/facebook.png",
-  },
-];
 
 const SUBJECT_OPTIONS = [
   { value: "Buying a property or selling", label: "Buying a property or selling" },
@@ -299,52 +257,6 @@ function SubjectSelect({
   );
 }
 
-function PinIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 21s7-4.5 7-10a7 7 0 1 0-14 0c0 5.5 7 10 7 10Z" />
-      <circle cx="12" cy="11" r="2.5" />
-    </svg>
-  );
-}
-
-function ClockIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v6l4 2" />
-    </svg>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M8 3.5h3l1.2 3.2-1.8 1.1a12 12 0 0 0 5.8 5.8l1.1-1.8 3.2 1.2v3A2 2 0 0 1 18.5 18 15.5 15.5 0 0 1 6 5.5 2 2 0 0 1 8 3.5Z" />
-    </svg>
-  );
-}
-
-function ShareIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="6" cy="12" r="2.25" />
-      <circle cx="17" cy="6.5" r="2.25" />
-      <circle cx="17" cy="17.5" r="2.25" />
-      <path d="M8 11.2 14.8 7.6M8.1 13.1l6.7 3.4" />
-    </svg>
-  );
-}
-
-function InfoIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 11v6M12 8h.01" />
-    </svg>
-  );
-}
-
 function UserIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
@@ -397,15 +309,6 @@ function ArrowRightIcon() {
 }
 
 export default function ContactSection() {
-  const [todayIndex, setTodayIndex] = useState(null);
-
-  useEffect(() => {
-    setTodayIndex(new Date().getDay());
-  }, []);
-
-  const todayLabel = WEEK_HOURS[todayIndex]?.label ?? "today";
-  const [showAllHours, setShowAllHours] = useState(false);
-  const [showHoursNote, setShowHoursNote] = useState(false);
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle");
@@ -457,147 +360,19 @@ export default function ContactSection() {
           <p className="eyebrow">Contact &amp; Location</p>
           <h2>Get in Touch</h2>
           <p className={styles.lead}>
-            Have questions about buying or selling? Get in touch with Marci.
+            Have questions about buying or selling?
+            <br />
+            Get in touch with Marci.
           </p>
         </header>
-
-        <ul className={styles.details}>
-          <li className={styles.detail}>
-            <span className={styles.icon}>
-              <PinIcon />
-            </span>
-            <div className={styles.detailContent}>
-              <h3 className={styles.detailTitle}>Location</h3>
-              <address className={styles.detailBody}>
-                <p>{ADDRESS}</p>
-                <a href={MAP_LINK} target="_blank" rel="noreferrer">
-                  View on Google Maps
-                </a>
-              </address>
-            </div>
-          </li>
-
-          <li className={styles.detail}>
-            <span className={styles.icon}>
-              <ClockIcon />
-            </span>
-            <div className={styles.detailContent}>
-              <h3 className={styles.detailTitle}>Office Hours</h3>
-              <div className={styles.detailBody}>
-                <p>
-                  Open today: {todayLabel}, {DAILY_HOURS}
-                </p>
-                <p>Open daily: {DAILY_HOURS}</p>
-                <div className={styles.hoursActions}>
-                  <button
-                    type="button"
-                    className={styles.hoursToggle}
-                    aria-expanded={showAllHours}
-                    aria-controls="office-hours-list"
-                    onClick={() => setShowAllHours((open) => !open)}
-                  >
-                    {showAllHours ? "Hide other times" : "Show other times"}
-                  </button>
-                  <div className={styles.infoWrap}>
-                    <button
-                      type="button"
-                      className={styles.infoButton}
-                      aria-expanded={showHoursNote}
-                      aria-controls="hours-note"
-                      onClick={() => setShowHoursNote((open) => !open)}
-                    >
-                      <InfoIcon />
-                      <span className="visually-hidden">
-                        Appointments outside office hours
-                      </span>
-                    </button>
-                    <p
-                      id="hours-note"
-                      className={
-                        showHoursNote
-                          ? `${styles.infoTip} ${styles.infoTipOpen}`
-                          : styles.infoTip
-                      }
-                      role="note"
-                    >
-                      Appointments outside office hours available upon request.
-                      Just call!
-                    </p>
-                  </div>
-                </div>
-                {showAllHours ? (
-                  <ul id="office-hours-list" className={styles.hoursList}>
-                    {WEEK_HOURS.map((day, index) => (
-                      <li
-                        key={day.id}
-                        className={index === todayIndex ? styles.hoursToday : undefined}
-                        aria-current={index === todayIndex ? "date" : undefined}
-                      >
-                        <span>{day.label}</span>
-                        <span>{DAILY_HOURS}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
-              </div>
-            </div>
-          </li>
-
-          <li className={styles.detail}>
-            <span className={styles.icon}>
-              <PhoneIcon />
-            </span>
-            <div className={styles.detailContent}>
-              <h3 className={styles.detailTitle}>Contact Number</h3>
-              <div className={styles.detailBody}>
-                <p>Give Marci a call. She’ll be happy to help with your real estate needs.</p>
-                <a href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a>
-              </div>
-            </div>
-          </li>
-
-          <li className={styles.detail}>
-            <span className={styles.icon}>
-              <ShareIcon />
-            </span>
-            <div className={styles.detailContent}>
-              <h3 className={styles.detailTitle}>Follow Us</h3>
-              <div className={styles.detailBody}>
-                <p>Connect with Marci on social media.</p>
-                <ul className={styles.socials}>
-                  {SOCIALS.map((social) => (
-                    <li key={social.id}>
-                      <a
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.label}
-                      >
-                        <Image
-                          src={social.iconSrc}
-                          alt=""
-                          width={24}
-                          height={24}
-                          unoptimized
-                          className={styles.socialIcon}
-                        />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </li>
-        </ul>
 
         <div className={styles.layout}>
           <form className={styles.form} noValidate onSubmit={handleSubmit}>
             <div className={styles.formIntro}>
-              <h3>Contact Us</h3>
+              <h3>Send Marci a Message</h3>
               <p>
                 Fill out the form below and Marci will get back to you as soon as
-                possible. Submissions on this site are for demo only — no email is
-                sent.
+                possible.
               </p>
             </div>
 

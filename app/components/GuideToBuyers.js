@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { COMING_SOON_PATH } from "../lib/siteRoutes";
 import styles from "./TopResidentialSales.module.css";
 
 export default function GuideToBuyers() {
@@ -26,10 +27,7 @@ export default function GuideToBuyers() {
               dial, &amp; more!
             </p>
           </div>
-          <a
-            href="https://marcimetzger.com/listings"
-            className="btn btn--primary"
-          >
+          <a href={COMING_SOON_PATH} className="btn btn--primary">
             Browse Properties
           </a>
         </div>

@@ -18,8 +18,12 @@
   max-width: var(--measure);
 }
 
-.introText .lead {
-  max-width: none;
+.description {
+  margin: 0;
+  max-width: var(--gallery-description-max-width);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
 }
 
 .exploreAll {

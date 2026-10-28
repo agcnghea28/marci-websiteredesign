@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { COMING_SOON_PATH } from "../lib/siteRoutes";
 import styles from "./Footer.module.css";
 
 const LOGO_WIDTH = 1024;
@@ -18,13 +19,13 @@ const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
 
 const EXPLORE_LINKS = [
   { label: "Home", href: "https://marci-websiteredesign.vercel.app/" },
-  { label: "Listings", href: "https://marcimetzger.com/listings" },
-  { label: "Meet Marci", href: "https://marcimetzger.com/about-us" },
+  { label: "Listings", href: COMING_SOON_PATH },
+  { label: "Meet Marci", href: COMING_SOON_PATH },
   {
     label: "Photo Gallery",
-    href: "https://marci-websiteredesign.vercel.app/#gallery",
+    href: COMING_SOON_PATH,
   },
-  { label: "Let's Move", href: "https://marcimetzger.com/lets-move" },
+  { label: "Let's Move", href: COMING_SOON_PATH },
 ];
 
 const SOCIALS = [
@@ -54,28 +55,77 @@ const SOCIALS = [
   },
 ];
 
+const DAILY_HOURS = "8:00 am – 7:00 pm";
+
+const WEEK_HOURS = [
+  { id: "sunday", label: "Sunday" },
+  { id: "monday", label: "Monday" },
+  { id: "tuesday", label: "Tuesday" },
+  { id: "wednesday", label: "Wednesday" },
+  { id: "thursday", label: "Thursday" },
+  { id: "friday", label: "Friday" },
+  { id: "saturday", label: "Saturday" },
+];
+
+function PinIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 21s7-4.5 7-10a7 7 0 1 0-14 0c0 5.5 7 10 7 10Z" />
+      <circle cx="12" cy="11" r="2.5" />
+    </svg>
+  );
+}
+
+function ClockIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v6l4 2" />
+    </svg>
+  );
+}
+
+function ChevronIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+function InfoIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v6M12 8h.01" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   const [year, setYear] = useState(() => new Date().getFullYear());
+  const [todayIndex, setTodayIndex] = useState(null);
+  const [showAllHours, setShowAllHours] = useState(false);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
+    setTodayIndex(new Date().getDay());
   }, []);
+
+  const todayLabel = WEEK_HOURS[todayIndex]?.label ?? "today";
 
   return (
     <footer className={`section ${styles.footer}`}>
       <div className={styles.cta}>
         <h2 className={styles.ctaTitle}>Ready to Make Your Next Move?</h2>
         <div className={styles.actions}>
-          <a
-            href="https://marcimetzger.com/listings"
-            className="btn btn--primary btn--on-dark"
-          >
+          <a href={COMING_SOON_PATH} className="btn btn--primary btn--on-dark">
             Find a Home
           </a>
           <a
-            href={PHONE_HREF}
+            href={COMING_SOON_PATH}
             className="btn btn--outline btn--on-dark"
-            aria-label={`Let's talk — call ${PHONE_DISPLAY}`}
+            aria-label="Let's talk — visit our coming soon page"
           >
             Let&apos;s Talk
           </a>
@@ -105,32 +155,6 @@ export default function Footer() {
             <br />
             homes in Pahrump, Nevada.
           </p>
-        </div>
-
-        <nav className={styles.explore} aria-label="Explore">
-          <p className="eyebrow eyebrow--on-dark">Explore</p>
-          <ul className={styles.linkList}>
-            {EXPLORE_LINKS.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className={styles.contact}>
-          <p className="eyebrow eyebrow--on-dark">Get in Touch</p>
-          <a
-            className={styles.address}
-            href={MAP_LINK}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {ADDRESS}
-          </a>
-          <a href={PHONE_HREF} aria-label={`Call Marci at ${PHONE_DISPLAY}`}>
-            {PHONE_DISPLAY}
-          </a>
           <ul className={styles.socials}>
             {SOCIALS.map((social) => (
               <li key={social.id}>
@@ -155,6 +179,97 @@ export default function Footer() {
             ))}
           </ul>
         </div>
+
+        <nav className={styles.explore} aria-label="Explore">
+          <p className="eyebrow eyebrow--on-dark">Explore</p>
+          <ul className={styles.linkList}>
+            {EXPLORE_LINKS.map((link) => (
+              <li key={link.label}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className={styles.contact}>
+          <p className="eyebrow eyebrow--on-dark">Get in Touch</p>
+          <a
+            className={`${styles.address} ${styles.detailLink}`}
+            href={MAP_LINK}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <PinIcon />
+            <span>{ADDRESS}</span>
+          </a>
+          <a
+            className={styles.detailLink}
+            href={PHONE_HREF}
+            aria-label={`Call Marci at ${PHONE_DISPLAY}`}
+          >
+            <ClockIcon />
+            <span>{PHONE_DISPLAY}</span>
+          </a>
+          <hr className={styles.hoursRule} />
+          <div className={styles.hours}>
+            <ClockIcon />
+            <div className={styles.hoursCopy}>
+            <p className={styles.hoursTitle}>Office Hours</p>
+            <p>
+              Open today: {todayLabel}, {DAILY_HOURS}
+            </p>
+            <div className={styles.dailyRow}>
+              <p>Open daily: {DAILY_HOURS}</p>
+              <button
+                type="button"
+                className={styles.hoursChevron}
+                aria-expanded={showAllHours}
+                aria-controls="footer-office-hours"
+                aria-label={showAllHours ? "Hide other times" : "Show other times"}
+                onClick={() => setShowAllHours((open) => !open)}
+              >
+                <ChevronIcon />
+              </button>
+              <div className={styles.infoWrap}>
+                <button
+                  type="button"
+                  className={styles.infoButton}
+                  aria-describedby="footer-hours-note"
+                >
+                  <InfoIcon />
+                  <span className="visually-hidden">
+                    Appointments outside office hours
+                  </span>
+                </button>
+                <p id="footer-hours-note" className={styles.infoTip} role="note">
+                  Appointments outside office hours available upon request. Just
+                  call!
+                </p>
+              </div>
+            </div>
+            {showAllHours ? (
+              <ul id="footer-office-hours" className={styles.hoursList}>
+                {WEEK_HOURS.map((day, index) => (
+                  <li
+                    key={day.id}
+                    className={
+                      index === todayIndex ? styles.hoursToday : undefined
+                    }
+                    aria-current={index === todayIndex ? "date" : undefined}
+                  >
+                    <span>{day.label}</span>
+                    <span>{DAILY_HOURS}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            <p className={styles.hoursHint}>
+              Click the chevron &amp; hover over information icon for more
+              information.
+            </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <hr className={styles.rule} />
@@ -164,11 +279,11 @@ export default function Footer() {
           Copyright © {year} Marci METZGER • All Rights Reserved
         </p>
         <p className={styles.policies}>
-          <a id="privacy-policy" href="#">
+          <a id="privacy-policy" href={COMING_SOON_PATH}>
             Privacy Policy
           </a>
           <span aria-hidden="true">|</span>
-          <a id="terms-and-conditions" href="#">
+          <a id="terms-and-conditions" href={COMING_SOON_PATH}>
             Terms and Conditions
           </a>
         </p>

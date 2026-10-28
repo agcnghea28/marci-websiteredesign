@@ -95,9 +95,31 @@
   margin-top: var(--space-2);
 }
 
+.brand .socials {
+  margin-top: var(--space-3);
+}
+
 .contact > a,
 .brand p {
   overflow-wrap: anywhere;
+}
+
+.detailLink {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.detailLink svg {
+  flex: 0 0 auto;
+  width: var(--space-5);
+  height: var(--space-5);
+  margin-top: 0.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .linkList,
@@ -172,6 +194,172 @@
 .socials a:focus-visible {
   outline: 2px solid var(--color-rose);
   outline-offset: 3px;
+}
+
+.hoursRule {
+  width: 100%;
+  margin: var(--space-2) 0 0;
+  border: 0;
+  border-top: 1px solid var(--footer-divider);
+}
+
+.hours {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.hours > svg {
+  flex: 0 0 auto;
+  width: var(--space-5);
+  height: var(--space-5);
+  margin-top: 0.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hoursCopy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.hoursTitle {
+  margin: 0;
+  color: var(--color-white);
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--text-nav);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-normal);
+}
+
+.hours p {
+  margin: 0;
+  color: var(--color-white);
+  font-size: var(--text-small);
+}
+
+.dailyRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.hoursChevron,
+.infoButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.hoursChevron svg,
+.infoButton svg {
+  width: var(--space-5);
+  height: var(--space-5);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--contact-icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hoursChevron svg {
+  transition: transform var(--transition-base);
+}
+
+.hoursChevron[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.hoursChevron:focus-visible,
+.infoButton:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+.infoWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.infoTip {
+  position: absolute;
+  z-index: 3;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  width: var(--contact-map-card-max-width);
+  max-width: calc(100vw - 2 * var(--section-padding-inline));
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--space-3);
+  border: 1px solid var(--contact-divider);
+  background-color: var(--color-bg);
+  box-shadow: var(--contact-card-shadow);
+  font-size: var(--text-small);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media (hover: hover) {
+  .hours .infoWrap:hover .infoTip {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.hours .infoWrap:focus-within .infoTip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hours .infoTip {
+  right: 0;
+  left: auto;
+  color: var(--color-text);
+}
+
+.hoursList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hoursList li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  color: var(--color-white);
+  font-size: var(--text-small);
+}
+
+.hoursToday {
+  font-weight: var(--weight-semibold);
+}
+
+.hours .hoursHint {
+  max-width: 18rem;
+  color: var(--footer-muted);
+  font-size: var(--text-caption);
+  line-height: var(--leading-snug);
 }
 
 .socialIcon {

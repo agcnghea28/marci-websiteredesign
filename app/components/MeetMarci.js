@@ -1,4 +1,5 @@
 import LogoMarquee from "./LogoMarquee";
+import { COMING_SOON_PATH } from "../lib/siteRoutes";
 import styles from "./MeetMarci.module.css";
 
 const PHONE_DISPLAY = "(206) 919-6886";
@@ -43,10 +44,7 @@ export default function MeetMarci() {
             >
               Call Marci Today
             </a>
-            <a
-              href="https://marcimetzger.com/about-us"
-              className="btn btn--outline"
-            >
+            <a href={COMING_SOON_PATH} className="btn btn--outline">
               Learn More
             </a>
           </div>

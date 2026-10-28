@@ -35,12 +35,12 @@ const TESTIMONIALS = [
     avatar: TESTIMONIAL_AVATAR,
   },
   {
-    id: "shannon-k",
-    name: "Shannon K.",
+    id: "jana",
+    name: "Jana",
     role: "Home Buyer",
     location: "Pahrump, Nevada",
     quote:
-      "Marci and Lauren are an amazing team. They are very knowledgeable about real estate and the important details that make home shopping easier and better for their clients.",
+      "Marci Metzger was fantastic to work with! She quickly understood our must-haves versus our nice-to-haves and found us a home that checked every box.",
     avatar: TESTIMONIAL_AVATAR,
   },
 ];

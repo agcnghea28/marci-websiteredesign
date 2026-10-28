@@ -1,0 +1,244 @@
+.section {
+  background-color: var(--color-bg);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  min-width: 0;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .intro {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-16);
+  }
+
+  .introCopy {
+    padding-top: calc(var(--text-eyebrow) + var(--space-4) + var(--space-2));
+  }
+}
+
+.introHeading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.introHeading h2 {
+  margin: 0;
+  max-width: var(--measure);
+}
+
+.introCopy {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.introCopy p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8) var(--space-4);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
+  }
+}
+
+.statDivider {
+  display: none;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-4);
+  min-width: 0;
+  padding-inline: var(--space-2);
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .stat {
+    flex: 0 0 auto;
+    padding-inline: 0;
+  }
+
+  .statDivider {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--space-6);
+  }
+
+  .statDivider::before {
+    content: "";
+    width: 1px;
+    height: 2.75rem;
+    background-color: color-mix(in srgb, var(--color-ink) 14%, transparent);
+  }
+}
+
+.statValue,
+.statValuePhrase {
+  margin: 0;
+  max-width: 100%;
+  font-family: var(--font-heading), serif;
+  font-size: clamp(1.35rem, 1.4rem + 0.8vw, 2.5rem);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  text-align: center;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+
+.statLabel {
+  margin: 0;
+  max-width: 100%;
+  font-size: var(--text-small);
+  line-height: var(--leading-snug);
+  text-align: center;
+  color: color-mix(in srgb, var(--color-ink) 72%, transparent);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 26rem;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background-color: var(--color-ink);
+}
+
+@media (min-width: 1024px) {
+  .card {
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+  }
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-base);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--color-ink) 46%, transparent);
+}
+
+@media (hover: hover) {
+  .card:hover .image {
+    transform: scale(var(--featured-card-image-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
+  }
+
+  .card:hover .image {
+    transform: none;
+  }
+}
+
+.cardBody {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 32rem;
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--color-white);
+}
+
+.cardBody h3 {
+  margin: 0;
+  max-width: 16rem;
+  color: inherit;
+  text-align: center;
+}
+
+.cardCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.cardCopy p {
+  margin: 0;
+  max-width: 28rem;
+  text-align: center;
+  color: color-mix(in srgb, var(--color-white) 94%, transparent);
+}

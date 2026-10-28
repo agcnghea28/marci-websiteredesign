@@ -1,5 +1,5 @@
 import HeroBackground from "./HeroBackground";
-import ListingSearch from "./ListingSearch";
+import { COMING_SOON_PATH } from "../lib/siteRoutes";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -24,10 +24,10 @@ export default function Hero() {
             >
               Call Now
             </a>
+            <a href={COMING_SOON_PATH} className="btn btn--outline btn--on-dark">
+              Search Listings
+            </a>
           </div>
-        </div>
-        <div className={`container ${styles.searchWrap}`}>
-          <ListingSearch />
         </div>
       </div>
     </section>

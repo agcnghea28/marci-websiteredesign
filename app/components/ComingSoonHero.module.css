@@ -1,0 +1,47 @@
+.heroInner {
+  justify-content: center;
+}
+
+.content {
+  flex: 0 1 auto;
+  gap: var(--space-6);
+  max-width: 42rem;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading), serif;
+  font-size: var(--text-h0);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  color: var(--color-white);
+}
+
+.description {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-lead);
+  line-height: var(--leading-normal);
+  color: var(--color-white);
+}
+
+.ctas {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .content {
+    gap: var(--space-6);
+  }
+
+  .ctas {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ctas .btn {
+    flex: 0 1 auto;
+    width: auto;
+  }
+}

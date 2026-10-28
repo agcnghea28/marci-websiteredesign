@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { COMING_SOON_PATH } from "../lib/siteRoutes";
 import styles from "./FeaturedProperties.module.css";
 
-const EXPLORE_ALL_URL = "https://marcimetzger.com/listings";
+const EXPLORE_ALL_URL = COMING_SOON_PATH;
 
 function googleMapsSearchUrl(address) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -314,15 +315,13 @@ export default function FeaturedProperties() {
       <div className={styles.intro}>
         <div className={styles.introText}>
           <h2>Featured Properties</h2>
-          <p className="lead">
+          <p className={styles.description}>
             Explore homes and properties available in Pahrump, Nevada.
           </p>
         </div>
         <a
           href={EXPLORE_ALL_URL}
           className={`btn btn--outline ${styles.exploreAll}`}
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Explore All
           <ArrowRightIcon />
@@ -402,10 +401,8 @@ export default function FeaturedProperties() {
                 <div className={styles.cardFooter}>
                   <p className={styles.price}>{property.price}</p>
                   <a
-                    href={property.href}
+                    href={COMING_SOON_PATH}
                     className={`btn btn--primary ${styles.viewProperty}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     View Property
                   </a>

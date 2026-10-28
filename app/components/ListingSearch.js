@@ -122,10 +122,10 @@ const PRICE_DEFAULT_MAX = 8000000;
 const LOCATIONS = LISTING_LOCATIONS;
 
 const PROPERTY_TYPES = [
-  { value: "sfr", label: "Single Family" },
-  { value: "othr", label: "Other" },
-  { value: "ld", label: "Land" },
-  { value: "lse", label: "Lease" },
+  { value: "7", label: "Land" },
+  { value: "11", label: "Residential Lease" },
+  { value: "6", label: "High Rise" },
+  { value: "1", label: "Residential" },
 ];
 
 const BEDROOMS = [
@@ -685,7 +685,7 @@ export default function ListingSearch() {
                     <SearchOptionList
                       options={LOCATIONS}
                       value={cityValue}
-                      placeholder="Location"
+                      placeholder="Any"
                       onSelect={(next) => {
                         setCityValue(next);
                         setActiveMenu(null);
@@ -728,7 +728,7 @@ export default function ListingSearch() {
                     <SearchOptionList
                       options={PROPERTY_TYPES}
                       value={typeValue}
-                      placeholder="Type"
+                      placeholder="Any"
                       onSelect={(next) => {
                         setTypeValue(next);
                         setActiveMenu(null);
