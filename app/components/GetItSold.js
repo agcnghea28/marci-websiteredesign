@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { COMING_SOON_PATH } from "../lib/siteRoutes";
+import { HOME_PROPERTY_SEARCH_HREF } from "../lib/siteRoutes";
 import { useCountUp } from "../lib/useCountUp";
 import styles from "./GetItSold.module.css";
 
@@ -89,7 +89,7 @@ const CARDS = [
     copy: [
       "Nobody knows the market like Marci Metzger. Enjoy having a pro at your service, with market analysis, upgrade lists, contractors on speed dial, and more!",
     ],
-    cta: { href: COMING_SOON_PATH, label: "Browse Properties" },
+    cta: { href: HOME_PROPERTY_SEARCH_HREF, label: "Browse Properties" },
     image: "/images/guide-to-buyers/guide-to-buyers.jpg",
     imageAlt: "Hand holding house keys in front of colorful model homes",
   },

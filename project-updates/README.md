@@ -7,6 +7,7 @@ This folder is for **planning, audits, and progress notes only**. It is separate
 ```
 project-updates/
   README.md           ← this file
+  submission/         ← implementation note + email checklist (not sent automatically)
   audits/             ← dated audit reports (QA, assignment rubric, pre-submit reviews)
     _template.md      ← copy when starting a new audit
     YYYY-MM-DD-*.md   ← one file per audit
@@ -16,7 +17,16 @@ project-updates/
 
 | Date | Document | Summary |
 |------|----------|---------|
-| 2026-10-28 | [Junior WB site QA audit](audits/2026-10-28-junior-wb-site-qa-audit.md) | Home-page revamp vs Luxury Presence assignment; gaps, deliverables, priorities |
+| 2026-10-28 | [Junior WB site QA audit](audits/2026-10-28-junior-wb-site-qa-audit.md) | Initial rubric pass (partially superseded) |
+| 2026-10-28 | [Homepage final audit](audits/2026-10-28-homepage-final-audit.md) | Post-polish audit + remediation (nav, hero image, QA) |
+| 2026-10-28 | [Image provenance](audits/image-provenance.md) | Reference hero download log |
+
+## Submission
+
+| Document | Purpose |
+|----------|---------|
+| [IMPLEMENTATION-NOTE.md](submission/IMPLEMENTATION-NOTE.md) | Attach to phcareers email |
+| [SUBMISSION-CHECKLIST.md](submission/SUBMISSION-CHECKLIST.md) | URL, resume, deploy, email steps |
 
 _Add new rows when you add audits._
 

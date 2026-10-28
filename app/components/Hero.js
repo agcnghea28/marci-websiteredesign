@@ -1,5 +1,5 @@
 import HeroBackground from "./HeroBackground";
-import { COMING_SOON_PATH } from "../lib/siteRoutes";
+import { HOME_PROPERTY_SEARCH_HREF } from "../lib/siteRoutes";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -24,7 +24,10 @@ export default function Hero() {
             >
               Call Now
             </a>
-            <a href={COMING_SOON_PATH} className="btn btn--outline btn--on-dark">
+            <a
+              href={HOME_PROPERTY_SEARCH_HREF}
+              className="btn btn--outline btn--on-dark"
+            >
               Search Listings
             </a>
           </div>

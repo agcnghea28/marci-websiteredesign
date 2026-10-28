@@ -7,7 +7,7 @@ import styles from "./Hero.module.css";
 const PARALLAX_RATE = 0.35;
 
 export default function HeroBackground({
-  imageSrc = "/images/hero/hero.png",
+  imageSrc = "/images/hero/hero.jpg",
 }) {
   const frameRef = useRef(null);
 

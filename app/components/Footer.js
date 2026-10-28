@@ -2,7 +2,14 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { COMING_SOON_PATH } from "../lib/siteRoutes";
+import {
+  COMING_SOON_PATH,
+  HOME_ABOUT_HREF,
+  HOME_CONTACT_HREF,
+  HOME_GALLERY_HREF,
+  HOME_HERO_HREF,
+  HOME_PROPERTY_SEARCH_HREF,
+} from "../lib/siteRoutes";
 import styles from "./Footer.module.css";
 
 const LOGO_WIDTH = 1024;
@@ -18,13 +25,10 @@ const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
 )}`;
 
 const EXPLORE_LINKS = [
-  { label: "Home", href: "https://marci-websiteredesign.vercel.app/" },
-  { label: "Listings", href: COMING_SOON_PATH },
-  { label: "Meet Marci", href: COMING_SOON_PATH },
-  {
-    label: "Photo Gallery",
-    href: COMING_SOON_PATH,
-  },
+  { label: "Home", href: HOME_HERO_HREF },
+  { label: "Listings", href: HOME_PROPERTY_SEARCH_HREF },
+  { label: "Meet Marci", href: HOME_ABOUT_HREF },
+  { label: "Photo Gallery", href: HOME_GALLERY_HREF },
   { label: "Let's Move", href: COMING_SOON_PATH },
 ];
 
@@ -127,13 +131,13 @@ export default function Footer() {
       <div className={styles.cta}>
         <h2 className={styles.ctaTitle}>Ready to Make Your Next Move?</h2>
         <div className={styles.actions}>
-          <a href={COMING_SOON_PATH} className="btn btn--primary btn--on-dark">
+          <a href={HOME_PROPERTY_SEARCH_HREF} className="btn btn--primary btn--on-dark">
             Find a Home
           </a>
           <a
-            href={COMING_SOON_PATH}
+            href={HOME_CONTACT_HREF}
             className="btn btn--outline btn--on-dark"
-            aria-label="Let's talk — visit our coming soon page"
+            aria-label="Let's talk — contact Marci"
           >
             Let&apos;s Talk
           </a>
@@ -145,7 +149,7 @@ export default function Footer() {
       <div className={styles.columns}>
         <div className={styles.brand}>
           <a
-            href="https://marci-websiteredesign.vercel.app/"
+            href={HOME_HERO_HREF}
             className={styles.logo}
             aria-label="Marci Metzger - The Ridge Realty Group"
           >

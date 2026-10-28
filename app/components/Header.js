@@ -4,7 +4,12 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   COMING_SOON_PATH,
+  HOME_ABOUT_HREF,
+  HOME_CONTACT_HREF,
   HOME_HERO_HREF,
+  HOME_PROPERTIES_HREF,
+  HOME_PROPERTY_SEARCH_HREF,
+  HOME_TESTIMONIALS_HREF,
 } from "../lib/siteRoutes";
 import styles from "./Header.module.css";
 
@@ -31,18 +36,18 @@ function LogoMark({ className, priority = false }) {
 
 const PRIMARY_LINKS = [
   { label: "Home", href: HOME_HERO_HREF },
-  { label: "Listings", href: COMING_SOON_PATH },
+  { label: "Listings", href: HOME_PROPERTY_SEARCH_HREF },
   { label: "Let's Move", href: COMING_SOON_PATH },
-  { label: "About Marci", href: COMING_SOON_PATH },
+  { label: "About Marci", href: HOME_ABOUT_HREF },
 ];
 
 const MENU_LINKS = [
   { label: "Home", href: HOME_HERO_HREF },
-  { label: "About Marci", href: COMING_SOON_PATH },
-  { label: "Home Search", href: COMING_SOON_PATH },
-  { label: "Properties", href: COMING_SOON_PATH },
-  { label: "Testimonials", href: COMING_SOON_PATH },
-  { label: "Contact Us", href: COMING_SOON_PATH },
+  { label: "About Marci", href: HOME_ABOUT_HREF },
+  { label: "Home Search", href: HOME_PROPERTY_SEARCH_HREF },
+  { label: "Properties", href: HOME_PROPERTIES_HREF },
+  { label: "Testimonials", href: HOME_TESTIMONIALS_HREF },
+  { label: "Let's Connect", href: HOME_CONTACT_HREF },
 ];
 
 function SearchIcon() {
@@ -382,7 +387,7 @@ export default function Header() {
   const handleHeaderSearchSubmit = (event) => {
     event.preventDefault();
     setSearchOpen(false);
-    window.location.assign(COMING_SOON_PATH);
+    window.location.assign(HOME_PROPERTY_SEARCH_HREF);
   };
 
   const handlePanelLinkClick = () => {

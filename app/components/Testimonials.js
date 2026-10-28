@@ -27,7 +27,7 @@ const TESTIMONIALS = [
   },
   {
     id: "cherly-t",
-    name: "Cherly T.",
+    name: "Cheryl T.",
     role: "Home Seller",
     location: "Pahrump, Nevada",
     quote:

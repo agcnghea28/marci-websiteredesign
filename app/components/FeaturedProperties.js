@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { COMING_SOON_PATH } from "../lib/siteRoutes";
+import { HOME_PROPERTY_SEARCH_HREF } from "../lib/siteRoutes";
 import styles from "./FeaturedProperties.module.css";
 
-const EXPLORE_ALL_URL = COMING_SOON_PATH;
+const EXPLORE_ALL_URL = HOME_PROPERTY_SEARCH_HREF;
 
 function googleMapsSearchUrl(address) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -402,7 +402,7 @@ export default function FeaturedProperties() {
                 <div className={styles.cardFooter}>
                   <p className={styles.price}>{property.price}</p>
                   <a
-                    href={COMING_SOON_PATH}
+                    href={property.href}
                     className={`btn btn--primary ${styles.viewProperty}`}
                   >
                     View Property
